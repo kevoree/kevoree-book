@@ -1,0 +1,562 @@
+<!DOCTYPE HTML>
+<html lang="en-US" manifest="../manifest.appcache">
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <title>The Annotation API | kevoree-book</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 0.5.2">
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    
+    
+    <meta name="author" content="kevoree">
+    
+    
+    <link rel="next" href="../making_a_component/the_kevoree_maven_plugin.html" />
+    
+    
+    <link rel="prev" href="../making_a_component/process.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+<link rel="stylesheet" href="../gitbook/style.css">
+
+
+        
+    <div class="book" data-github="kevoree/kevoree-book" data-level="2.2" data-basepath=".." data-revision="1402613165167">
+    <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
+    
+    <a href="https://github.com/kevoree/kevoree-book" target="_blank" class="btn pull-left home-bookmark" aria-label="GitHub home"><i class="fa fa-bookmark-o"></i></a>
+    
+    <a href="#" class="btn pull-left toggle-search" aria-label="Toggle search"><i class="fa fa-search"></i></a>
+    <span id="font-settings-wrapper">
+        <a href="#" class="btn pull-left toggle-font-settings" aria-label="Toggle font settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="btn-group btn-block">
+        <button id="reduce-font-size" class="btn btn-default">A</button>
+        <button id="enlarge-font-size" class="btn btn-default">A</button>
+    </div>
+
+    <ul class="list-group font-family-list">
+        <li class="list-group-item" data-font="0">Serif</li>
+        <li class="list-group-item" data-font="1">Sans</li>
+    </ul>
+
+    <div class="btn-group btn-group-xs btn-block color-theme-list">
+        <button type="button" class="btn btn-default" id="color-theme-preview-0" data-theme="0">White</button>
+        <button type="button" class="btn btn-default" id="color-theme-preview-1" data-theme="1">Sepia</button>
+        <button type="button" class="btn btn-default" id="color-theme-preview-2" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </span>
+
+    <!-- Actions Right -->
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Share on Google Plus"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Share on Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Share on Twitter"><i class="fa fa-twitter"></i></a>
+    
+
+    
+    <a href="https://github.com/kevoree/kevoree-book/stargazers" target="_blank" class="btn pull-right count-star hidden-xs"><i class="fa fa-star-o"></i> Star (<span>-</span>)</a>
+    <a href="https://github.com/kevoree/kevoree-book/watchers" target="_blank" class="btn pull-right count-watch hidden-xs"><i class="fa fa-eye"></i> Watch (<span>-</span>)</a>
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-spinner fa-spin"></i>
+        <a href="../" >kevoree-book</a>
+    </h1>
+</div>
+
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+        
+        <li>
+            <a href="https://github.com/kevoree" target="blank" class="author-link">About the author</a>
+        </li>
+        
+
+        
+        
+        <li>
+            <a href="https://github.com/kevoree/kevoree-book/issues" target="blank"class="issues-link">Questions and Issues</a>
+        </li>
+        
+
+        
+        
+        <li>
+            <a href="https://github.com/kevoree/kevoree-book/edit/master/making_a_component/the_annotation_api.md" target="blank" class="contribute-link">Edit and Contribute</a>
+        </li>
+        
+
+        
+        <li class="divider"></li>
+        
+
+        <li data-level="0" data-path="index.html">
+            <a href="../"><i class="fa fa-check"></i> Introduction</a>
+        </li>
+        
+    
+        <li class="chapter " data-level="1" data-path="getting_started/README.html">
+            
+            <a href="../getting_started/README.html">
+                <i class="fa fa-check"></i> <b>1.</b> Getting started
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="making_a_component/README.html">
+            
+            <a href="../making_a_component/README.html">
+                <i class="fa fa-check"></i> <b>2.</b> Making a component
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="making_a_component/process.html">
+            
+            <a href="../making_a_component/process.html">
+                <i class="fa fa-check"></i> <b>2.1.</b> Process
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="making_a_component/the_annotation_api.html">
+            
+            <a href="../making_a_component/the_annotation_api.html">
+                <i class="fa fa-check"></i> <b>2.2.</b> The Annotation API
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="making_a_component/the_kevoree_maven_plugin.html">
+            
+            <a href="../making_a_component/the_kevoree_maven_plugin.html">
+                <i class="fa fa-check"></i> <b>2.3.</b> The Kevoree Maven Plugin
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="making_a_component/kevoree_runtime_options.html">
+            
+            <a href="../making_a_component/kevoree_runtime_options.html">
+                <i class="fa fa-check"></i> <b>2.4.</b> Kevoree Runtime options
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="making_a_component/write_tests_for_continuous_validation.html">
+            
+            <a href="../making_a_component/write_tests_for_continuous_validation.html">
+                <i class="fa fa-check"></i> <b>2.5.</b> Write tests for continuous validation
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="kevoree_script_aka_kevscript/README.html">
+            
+            <a href="../kevoree_script_aka_kevscript/README.html">
+                <i class="fa fa-check"></i> <b>3.</b> Kevoree Script (aka KevScript)
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="kevoree_script_aka_kevscript/how_to_script.html">
+            
+            <a href="../kevoree_script_aka_kevscript/how_to_script.html">
+                <i class="fa fa-check"></i> <b>3.1.</b> How to script ?
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="kevoree_script_aka_kevscript/dynamic_adaptation_of_a_kevoree_runtime.html">
+            
+            <a href="../kevoree_script_aka_kevscript/dynamic_adaptation_of_a_kevoree_runtime.html">
+                <i class="fa fa-check"></i> <b>3.2.</b> Dynamic adaptation of a Kevoree Runtime
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="kevoree_script_aka_kevscript/kevscript_commands.html">
+            
+            <a href="../kevoree_script_aka_kevscript/kevscript_commands.html">
+                <i class="fa fa-check"></i> <b>3.3.</b> KevScript Commands
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="cloud_management_with_kevoree/README.html">
+            
+            <a href="../cloud_management_with_kevoree/README.html">
+                <i class="fa fa-check"></i> <b>4.</b> Cloud Management with Kevoree
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="cloud_management_with_kevoree/sandbox_properties.html">
+            
+            <a href="../cloud_management_with_kevoree/sandbox_properties.html">
+                <i class="fa fa-check"></i> <b>4.1.</b> Sandbox properties
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="cloud_management_with_kevoree/available_mappings_to_infrastructure.html">
+            
+            <a href="../cloud_management_with_kevoree/available_mappings_to_infrastructure.html">
+                <i class="fa fa-check"></i> <b>4.2.</b> Available mappings to infrastructure
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="developement_environement/README.html">
+            
+            <a href="../developement_environement/README.html">
+                <i class="fa fa-check"></i> <b>5.</b> Developement Environement
+            </a>
+            
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="http://www.gitbook.io/" target="blank" class="gitbook-link">Generated using GitBook</a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="page-wrapper" tabindex="-1">
+                <div class="book-progress">
+    <div class="bar">
+        <div class="inner" style="width: 26.666666666666668%;min-width: 20%;"></div>
+    </div>
+    <div class="chapters">
+    
+        <a href="../index.html" title="Introduction" class="chapter done new-chapter" data-progress="0" style="left: 0%;"></a>
+    
+        <a href="../getting_started/README.html" title="Getting started" class="chapter done new-chapter" data-progress="1" style="left: 6.666666666666667%;"></a>
+    
+        <a href="../making_a_component/README.html" title="Making a component" class="chapter done new-chapter" data-progress="2" style="left: 13.333333333333334%;"></a>
+    
+        <a href="../making_a_component/process.html" title="Process" class="chapter done " data-progress="2.1" style="left: 20%;"></a>
+    
+        <a href="../making_a_component/the_annotation_api.html" title="The Annotation API" class="chapter done " data-progress="2.2" style="left: 26.666666666666668%;"></a>
+    
+        <a href="../making_a_component/the_kevoree_maven_plugin.html" title="The Kevoree Maven Plugin" class="chapter  " data-progress="2.3" style="left: 33.333333333333336%;"></a>
+    
+        <a href="../making_a_component/kevoree_runtime_options.html" title="Kevoree Runtime options" class="chapter  " data-progress="2.4" style="left: 40%;"></a>
+    
+        <a href="../making_a_component/write_tests_for_continuous_validation.html" title="Write tests for continuous validation" class="chapter  " data-progress="2.5" style="left: 46.666666666666664%;"></a>
+    
+        <a href="../kevoree_script_aka_kevscript/README.html" title="Kevoree Script (aka KevScript)" class="chapter  new-chapter" data-progress="3" style="left: 53.333333333333336%;"></a>
+    
+        <a href="../kevoree_script_aka_kevscript/how_to_script.html" title="How to script ?" class="chapter  " data-progress="3.1" style="left: 60%;"></a>
+    
+        <a href="../kevoree_script_aka_kevscript/dynamic_adaptation_of_a_kevoree_runtime.html" title="Dynamic adaptation of a Kevoree Runtime" class="chapter  " data-progress="3.2" style="left: 66.66666666666667%;"></a>
+    
+        <a href="../kevoree_script_aka_kevscript/kevscript_commands.html" title="KevScript Commands" class="chapter  " data-progress="3.3" style="left: 73.33333333333333%;"></a>
+    
+        <a href="../cloud_management_with_kevoree/README.html" title="Cloud Management with Kevoree" class="chapter  new-chapter" data-progress="4" style="left: 80%;"></a>
+    
+        <a href="../cloud_management_with_kevoree/sandbox_properties.html" title="Sandbox properties" class="chapter  " data-progress="4.1" style="left: 86.66666666666667%;"></a>
+    
+        <a href="../cloud_management_with_kevoree/available_mappings_to_infrastructure.html" title="Available mappings to infrastructure" class="chapter  " data-progress="4.2" style="left: 93.33333333333333%;"></a>
+    
+        <a href="../developement_environement/README.html" title="Developement Environement" class="chapter  new-chapter" data-progress="5" style="left: 100%;"></a>
+    
+    </div>
+</div>
+
+                <div class="page-inner">
+                
+                    <section class="normal" id="section-gitbook_446">
+                    
+                        <h1 id="the-annotation-api">The Annotation API</h1>
+<p>The Annotation API is made to provide a simple and flexible way to decorate your existing code to declare it as a <code>component</code>, <code>channel</code>, <code>node</code> or <code>group</code>.</p>
+<h4 id="types">Types</h4>
+<p>1.<strong>Components</strong>
+New kind of Component are declared by placing a <code>@ComponentType</code> annotation on their implementation class.
+2.<strong>Channels</strong>
+The channels are in charge of the transport of messages and objects, from output to input ports. Each channel type has a different behavior (sync, async, parallel, sequential, first-answer, etc.) and is declared by putting a <code>@ChannelType</code> on its implementation class.
+3.<strong>Groups</strong>
+The groups are responsible for the dispatch and synchronization of the models between several nodes. Just as the channels, they can have different dispatch and synchronization policies for each type. They are declared by putting a <code>@GroupType</code> annotation on their implementation class.
+4.<strong>Nodes</strong>
+The nodes support the deployment of components or sub-nodes, so that the runtime always conforms to the last consistent model a node received. They are declared by putting a <code>@NodeType</code> annotation on their implementation class.</p>
+<blockquote>
+<p>Java</p>
+<hr>
+</blockquote>
+<pre><code>@ComponentType
+public class HelloProducerComponent{...}
+
+@ChannelType
+public class AsyncBroadcast implements ChannelDispatch {...}
+
+@GroupType
+public class WebSocketGroup {...}
+
+@NodeType
+@Library(name = &quot;Java&quot;)
+public class JavaNode implements ModelListener, org.kevoree.api.NodeType {...}
+</code></pre><blockquote>
+<p>Kotlin</p>
+<hr>
+</blockquote>
+<pre><code>public ComponentType class HelloProducerComponent{...}
+
+public ChannelType class AsyncBroadcast implements ChannelDispatch {...}
+
+public GroupType class WebSocketGroup {...}
+
+public NodeType class JavaNode implements ModelListener, org.kevoree.api.NodeType {...}
+</code></pre><h4 id="input-ports-provided-methods">Input Ports - Provided Methods</h4>
+<p>If you are used to Message-Oriented approaches, you just have to put a <code>@Input</code> annotation on the method you want to expose as an input port. If you are more familiar with Service-Oriented approaches, you will have to put a <code>@Provided</code> annotation on  each method you want to expose/offer.
+The port gets its name from the method name. The mapped methods have to declare a unique <code>Object</code>-typed parameter. In case this parameter is missing, the method will be called and any parameter from the caller will be dropped. In case the method has more than one parameter, an error will be triggered.
+In Kevoree, we have mixed the Message and Service oriented approaches. To this end, each call on a port can declare an optional <code>Callback</code> method. Any value returned from an <code>Input</code> or a <code>Provided</code> method will be forwarded to the caller and passed as parameter to the callback method it declared.</p>
+<blockquote>
+<p>Java</p>
+<hr>
+</blockquote>
+<pre><code class="lang-Java"><span class="hljs-annotation">@Input</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sayHelloTo</span>(Object msg) {...}
+
+<span class="hljs-annotation">@Provides</span>
+<span class="hljs-keyword">public</span> Boolean <span class="hljs-title">getTemp</span>() {...}
+</code></pre>
+<blockquote>
+<p>Kotlin</p>
+<hr>
+</blockquote>
+<pre><code class="lang-Kotlin">public Input void sayHelloTo(Object msg) {...}
+
+public Provides Boolean getTemp() {...}
+</code></pre>
+<h4 id="output-ports-required-methods">Output Ports - Required Methods</h4>
+<p>If you are used to Message-Oriented approaches, you just have to put a <code>@Output</code> annotation on a field of the class that will host the port. This field has to be typed as <code>Port</code> from the Kevoree API. If you are more familiar with Service-Oriented approaches, you will have to put a <code>@Required</code> annotation on  each method you want to use.
+The port gets its name from the field name.
+In Kevoree, we have mixed the Message and Service oriented approaches. To this end, each call on a port can declare an optional <code>Callback</code> method. This method is called as soon as the execution of the call is completed. The parameter of the callback is the value of the return of the <code>Input / Provided</code> port connected.</p>
+<blockquote>
+<p>Java</p>
+<hr>
+<p><strong>Without callback</strong></p>
+</blockquote>
+<pre><code class="lang-Java"><span class="hljs-annotation">@Output</span>
+<span class="hljs-keyword">private</span> org.kevoree.api.Port helloProduced;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onHelloProduced</span>(String greetingMessage) {
+    helloProduced.send(greetingMessage);
+}
+</code></pre>
+<blockquote>
+<p><strong>With callback</strong></p>
+</blockquote>
+<pre><code class="lang-Java"><span class="hljs-annotation">@Required</span>
+<span class="hljs-keyword">private</span> org.kevoree.api.Port userDecision;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">askUser</span>(String questionMessage) {
+    userDecision.call(greetingMessage, <span class="hljs-keyword">new</span> Callback() {
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span>(Object result) {
+            <span class="hljs-keyword">return</span> (Boolean)result;
+        }
+    });
+}
+</code></pre>
+<h4 id="parameters">Parameters</h4>
+<p>Parameters are sometimes useful to adapt the behavior of a piece of code. These parameters can be used to set the delay of a timeout, a display name of a frame, the color of a frame, etc.
+To declare a parameter, just declare a field in your class, and add to it the <code>@Param</code> annotation. The default value of a parameter has to be specified in the annotation as shown on the right.
+<span class="warning-bloc"><span class="fa fa-exclamation-triangle fa-lg orange"></span> Kevoree only supports the <code>Param</code> annottaion on <em>Primitive</em> types and their boxing equivalent.</span></p>
+<blockquote>
+<p>Java</p>
+<hr>
+</blockquote>
+<pre><code class="lang-Java"><span class="hljs-annotation">@Param</span>
+String name;
+
+<span class="hljs-annotation">@Param</span> (defaultValue = <span class="hljs-string">"2000"</span>)
+<span class="hljs-keyword">int</span> delay = <span class="hljs-number">2000</span>;
+</code></pre>
+<blockquote>
+<p>Kotlin</p>
+<hr>
+</blockquote>
+<pre><code class="lang-Kotlin">Param(defaultValue = &quot;default&quot;) var name : String = &quot;default&quot; ;
+</code></pre>
+<h4 id="library">Library</h4>
+<p>The Library annotation makes it possible for you to organize the components you create into virtual Libraries. It has nothing to do with the deployment, the location of the binaries or the behavior of your component. It can be whatever you want.
+<span class="warning-bloc"><span class="fa fa-exclamation-triangle fa-lg orange"></span> The Library annotation must always be placed after the type declaration annotation (i.e.: ComponentType, ChannelType, etc.).</span></p>
+<blockquote>
+<p>Java</p>
+<hr>
+</blockquote>
+<pre><code class="lang-Java"><span class="hljs-annotation">@NodeType</span>
+<span class="hljs-annotation">@Library</span>(name = <span class="hljs-string">"Java"</span>)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JavaNode</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ModelListener</span>, <span class="hljs-title">org</span>.<span class="hljs-title">kevoree</span>.<span class="hljs-title">api</span>.<span class="hljs-title">NodeType</span> {</span>...}
+</code></pre>
+<blockquote>
+<p>Kotlin</p>
+<hr>
+</blockquote>
+<pre><code class="lang-kotlin">public ComponentType Library(name=&quot;Java&quot;) class HelloKotlin {...}
+</code></pre>
+<h4 id="kevoree-services-injection">Kevoree services injection</h4>
+<p>Several services from the Kevoree runtime can be injected into a component, channel, group or node, on demand. To do so, just place a <code>KevoreeInject</code> annottaion on a variable typed by the servcie you need. The services available are:
+<strong>ModelService</strong>
+<strong>BootstrapService</strong>
+<strong>KevScriptService</strong>
+<strong>Context</strong>
+<strong>ChannelContext</strong></p>
+<blockquote>
+<p>Java</p>
+<hr>
+</blockquote>
+<pre><code class="lang-Java"><span class="hljs-annotation">@KevoreeInject</span>
+ChannelContext channelContext;
+</code></pre>
+<blockquote>
+<p>Kotlin</p>
+<hr>
+</blockquote>
+<pre><code class="lang-kotlin">KevoreeInject ChannelContext channelContext;
+</code></pre>
+<h4 id="life-cycle">Life Cycle</h4>
+<p>In Kevoree, Components, Channels, Groups and Nodes have a Life Cycle.
+Thus, the runtime must be able to  start, stop and update these elements when needed.
+Depending on these elements&#39; implementation, it may sometimes be required to perform some actions when stopping, starting or updating them.
+Life Cycle annotations are here to allow you to specify the methods to call on start, stop or update.
+There is no constraint on the method you select for these operations.
+<span class="warning-bloc"><span class="fa fa-exclamation-triangle fa-lg orange"></span> Be cautious about what you do in these methods, because you can freeze the entire runtime if you create a deadlock !</span></p>
+<blockquote>
+<p>Java</p>
+<hr>
+</blockquote>
+<pre><code class="lang-Java"><span class="hljs-annotation">@Start</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">startComponent</span>() {...}
+
+<span class="hljs-annotation">@Stop</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">stopComponent</span>() {...}
+
+<span class="hljs-annotation">@Update</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">updateComponent</span>() {...}
+</code></pre>
+<blockquote>
+<p>Kotlin</p>
+<hr>
+</blockquote>
+<pre><code class="lang-kotlin">Start fun startComponent(){...}
+
+Stop fun stopComponent(){...}
+
+Update fun updateComponent(){...}
+</code></pre>
+
+                    
+                    </section>
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../making_a_component/process.html" class="navigation navigation-prev " aria-label="Previous page: Process"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../making_a_component/the_kevoree_maven_plugin.html" class="navigation navigation-next " aria-label="Next page: The Kevoree Maven Plugin"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/jsrepl/jsrepl.js" id="jsrepl-script"></script>
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
