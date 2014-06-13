@@ -9,7 +9,7 @@ This is the default implementation. Basically it creates a second process for ea
 This Node type creates each child in a Linux container. This offers a light virtualization but isolates network and disk from each machine. This prevents network port collisition and allows to define CPU share time between child nodes.
 
 **DockerIO**
-Similar to LXC node, but using docker project as a backend.
+Similar to LXC node, but using docker project as a backend. It is the default implementation included in Boot2Kevoree
 
 **KVMNode**
 soon...
