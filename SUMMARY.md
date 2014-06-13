@@ -10,7 +10,7 @@
    * [The Kevoree Maven Plugin](making_a_component/the_kevoree_maven_plugin.md)
    * [Kevoree Runtime options](making_a_component/kevoree_runtime_options.md)
    * [Write tests for continuous validation](making_a_component/write_tests_for_continuous_validation.md)
-* [Developement Environement](developement_environement/README.md)
+* [Development Environment](developement_environement/README.md)
    * [IntelliJ](developement_environement/intellij.md)
        * [Installation](developement_environement/installation.md)
        * [Create a new project](developement_environement/create_a_new_project.md)
