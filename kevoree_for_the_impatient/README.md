@@ -1,6 +1,22 @@
 # Kevoree for the impatient
 
-You want to see something running fast, but not only a pre-compiled demo... ok this section is a super short tutorial to do a hello world in a Kevoree developement environement.
+### You want to see something running fast...ok
+
+1. Go to : http://runjs.kevoree.org
+    ![runjs.kevoree.org](runjs.kevoree.org.png)
+2. Fill your name and click on start, you will automatically join a public group (!no security)
+    ![runjs2](runjs2.png)
+3. Open a tab on: http://editor.kevoree.org/ and load the current model (File > Open from node > RunJS Shared Group > Pull Model)
+    ![editorRunJS](editorRunJS.png)
+4. Merge a default library through Model > Kevoree Standard Library > JavaScript > fakeconsole > merge
+    ![jsmerge](jsmerge.png)
+5. Drag and drop an HelloWorldComponent on your node (or the one of your neightbour...)
+6. Clic on server-node and on push
+    ![push2](push.png)
+7. You should see a new component in you log
+    ![hello](hello.png)
+
+### You want to develop your own component, here is a short tutorial to install a developement environement
 
 1. Install JDK8: https://jdk8.java.net/
 2. Install IntelliJ IDE : http://www.jetbrains.com/idea/download/
