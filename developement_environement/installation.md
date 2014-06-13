@@ -1,8 +1,14 @@
 # Installation
 
-Kevoree Plugin is distributed through IDEA repository like any other plugins. It is available since IntelliJ 13.
+Kevoree Plugin is distributed through IDEA main repository like any other plugins.
 
-* At startup screen
+##### Requirements:
+
+It is available since IntelliJ 13 and requires Java 1.6+. We recommand however to use JDK 1.8+.
+
+#### Intallation process
+
+* At startup screen (meaning main window is focus)
 * Naviguate to configure menu
 * Naviguate to plugins menu
 * Click on Browse repositories button

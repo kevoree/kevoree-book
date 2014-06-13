@@ -41,7 +41,7 @@ Destroys the platform node0
 
 Each method throw exception in case of errors, so no need to encapsulate them in a assert method, JUnit will grab the errors. Finally all platforms are automacally cleaned after test execution. So now you have everything to write a complete exemple to test the child management of JavaNode.
 
-```
+```java
 public class SubChildrenTest extends KevoreeTestCase {
     @Test
     public void startupChildTest() throws Exception {

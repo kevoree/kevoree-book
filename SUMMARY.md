@@ -1,6 +1,7 @@
 # Summary
 
 * [Getting started](getting_started/README.md)
+* [Kevoree for the impatient](kevoree_for_the_impatient/README.md)
 * [Making a component](making_a_component/README.md)
    * [Process](making_a_component/process.md)
    * [The Annotation API](making_a_component/the_annotation_api.md)
@@ -13,6 +14,8 @@
        * [Create a new project](developement_environement/create_a_new_project.md)
        * [Create a new Kevoree entity](developement_environement/create_a_new_kevoree_entity.md)
        * [Run Kevoree platform](developement_environement/run_kevoree_platform.md)
+   * [Standalone Editor](developement_environement/standalone_editor.md)
+   * [Web Editor](developement_environement/web_editor)
    * [Eclipse](developement_environement/eclipse.md)
        * [Features](developement_environement/features.md)
        * [Initial requirement ](developement_environement/initial_requirement.md)
