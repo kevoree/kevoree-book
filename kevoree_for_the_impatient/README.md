@@ -12,8 +12,9 @@
     ![jsmerge](jsmerge.png)
 5. Drag and drop an HelloWorldComponent on your node (or the one of your neightbour...)
 6. Clic on server-node and on push
-    ![push](push.png)
+    ![push2](push.png)
 7. You should see a new component in you log
+    ![hello](hello.png)
 
 ### You want to develop your own component, here is a short tutorial to install a developement environement
 
