@@ -4,7 +4,6 @@
 * [Getting started](getting_started/README.md)
 * [Kevoree for the impatient](kevoree_for_the_impatient/README.md)
 * [Making a component](making_a_component/README.md)
-   * [Process](making_a_component/process.md)
    * [The Annotation API](making_a_component/the_annotation_api.md)
        * [Ports definition](making_a_component/ports_definition.md)
        * [Injected Services](making_a_component/injected_services.md)
