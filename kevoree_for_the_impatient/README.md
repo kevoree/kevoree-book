@@ -1,5 +1,7 @@
 # Kevoree for the impatient
 
+> :warning: Kevoree Browser Runtime is still under heavy work; expect things to break randomly :)
+
 ### You want to see something running fast...ok
 
 1. Go to : http://runjs.kevoree.org

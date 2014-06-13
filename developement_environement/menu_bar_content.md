@@ -15,9 +15,9 @@ Save as JSON    | Save the current model in KWE to a JSON file client-side      
 Clear All                  | Reset the current model to an empty one (empty TypeDefinition list and empty model graph)         | Alt+A
 Clear Instances            | Delete every instances in the current model (empty model graph)                                   | Alt+I
 Clear Unused Type Defs     | Parse the current model in order to remove the unused TypeDefinition (no instance means unused)   | Alt+U
-Kevoree Standard Libraries | Open the **Kevoree Standard Libraries** popup ([see](kwe_popups.md#kevoree-standard-libraries)) | Alt+K
-From custom repository     | Open the **From custom repository** popup ([see](kwe_popups.md#from-custom-repository))         | <none>
-Custom push                | Open the **Custom push** popup ([see](kwe_popups.md#custom-push))                               | <none>
+Kevoree Standard Libraries | Open the **Kevoree Standard Libraries** popup ([see](kwe_popups.md)) | Alt+K
+From custom repository     | Open the **From custom repository** popup ([see](kwe_popups.md))         | <none>
+Custom push                | Open the **Custom push** popup ([see](kwe_popups.md))                               | <none>
 
 #### Edit menu
  Menu item      | Description                                                                 | Shortcut
@@ -25,10 +25,10 @@ Custom push                | Open the **Custom push** popup ([see](kwe_popups.md
 Undo            | Undo last model modification (:exclamation: **NOT IMPLEMENTED YET**)        | Ctrl+Z
 Redo            | Redo last model modification (:exclamation: **NOT IMPLEMENTED YET**)        | Ctrl+Y
 Settings        | Configure your KWE settings (saved locally using your browser LocalStorage) | Ctrl+K
-Server settings | Open the **Server settings** popup ([see](kwe_popups.md#server-settings)) | Ctrl+H
+Server settings | Open the **Server settings** popup ([see](kwe_popups.md)) | Ctrl+H
 
 #### KevScript menu
-Open the **KevScript** popup ([see](kwe_popups.md#kevscript))
+Open the **KevScript** popup ([see](kwe_popups.md))
 
 #### Help menu
-Open the **Help** popup ([see](kwe_popups.md#help))
+Open the **Help** popup ([see](kwe_popups.md))

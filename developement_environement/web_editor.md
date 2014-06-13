@@ -11,7 +11,6 @@ It is mostly written in Javascript and has been designed to work as a static sta
 
 ### Prerequisites
  - an up-to-date browser because it uses **WebSocket**, **LocalStorage** and **Canvas**
- - some [Kevoree-related knowledge](http://kevoree.org/doc/#getting-started)
 
 ### User interface basics
 KWE's UI is composed of 3 main components:

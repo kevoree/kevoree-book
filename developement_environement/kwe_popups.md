@@ -31,7 +31,7 @@ Using this popup, you can specify a group WebSocket server directly and ask for 
 ![KWE Custom push](http://hosta.braindead.fr/raw/539980cf1a9879c239a1a222)
 
 #### KevScript
-A [Kevoree Script](http://kevoree.org/doc/#kevoree-script-aka-kevscript) (aka KevScript) editor providing syntax highlighting and auto-completion.
+A [Kevoree Script](../kevoree_script_aka_kevscript/README.md) (aka KevScript) editor providing syntax highlighting and auto-completion.
 By default, this KevScript editor content is dinamically created according to the current model (model2kevs processing), but you can also change the content by using the provided examples (dropdown selector in the top-right corner).
 Once you are done editing, you have two choices:
  - **Download**: saves the current KevScript to a **.kevs** file client-side
