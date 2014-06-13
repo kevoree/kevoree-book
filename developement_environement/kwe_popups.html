@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Syntax | The Kevoree Book</title>
+        <title>KWE popups | The Kevoree Book</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 0.5.2">
@@ -19,10 +19,10 @@
     <meta name="author" content="kevoree">
     
     
-    <link rel="next" href="../kevoree_script_aka_kevscript/management_commands.html" />
+    <link rel="next" href="../developement_environement/model_edition.html" />
     
     
-    <link rel="prev" href="../kevoree_script_aka_kevscript/how_to_script.html" />
+    <link rel="prev" href="../developement_environement/menu_bar_content.html" />
     
 
         
@@ -34,7 +34,7 @@
 
 
         
-    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="6.2" data-basepath=".." data-revision="1402670508308">
+    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="5.3.2" data-basepath=".." data-revision="1402670508308">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -118,7 +118,7 @@
         
         
         <li>
-            <a href="https://github.com/kevoree/kevoree-tutorials/edit/master/kevoree_script_aka_kevscript/kevscript_commands.md" target="blank" class="contribute-link">Edit and Contribute</a>
+            <a href="https://github.com/kevoree/kevoree-tutorials/edit/master/developement_environement/kwe_popups.md" target="blank" class="contribute-link">Edit and Contribute</a>
         </li>
         
 
@@ -507,7 +507,7 @@
             <div class="page-wrapper" tabindex="-1">
                 <div class="book-progress">
     <div class="bar">
-        <div class="inner" style="width: 82.3529411764706%;min-width: 79.41176470588235%;"></div>
+        <div class="inner" style="width: 58.8235294117647%;min-width: 55.88235294117647%;"></div>
     </div>
     <div class="chapters">
     
@@ -553,21 +553,21 @@
     
         <a href="../developement_environement/kwe_popups.html" title="KWE popups" class="chapter done " data-progress="5.3.2" style="left: 58.8235294117647%;"></a>
     
-        <a href="../developement_environement/model_edition.html" title="Model Edition" class="chapter done " data-progress="5.3.3" style="left: 61.76470588235294%;"></a>
+        <a href="../developement_environement/model_edition.html" title="Model Edition" class="chapter  " data-progress="5.3.3" style="left: 61.76470588235294%;"></a>
     
-        <a href="../developement_environement/known_protocols.html" title="Known protocols" class="chapter done " data-progress="5.3.4" style="left: 64.70588235294117%;"></a>
+        <a href="../developement_environement/known_protocols.html" title="Known protocols" class="chapter  " data-progress="5.3.4" style="left: 64.70588235294117%;"></a>
     
-        <a href="../developement_environement/eclipse.html" title="Eclipse" class="chapter done " data-progress="5.4" style="left: 67.6470588235294%;"></a>
+        <a href="../developement_environement/eclipse.html" title="Eclipse" class="chapter  " data-progress="5.4" style="left: 67.6470588235294%;"></a>
     
-        <a href="../developement_environement/wizards.html" title="Project Wizards" class="chapter done " data-progress="5.4.1" style="left: 70.58823529411765%;"></a>
+        <a href="../developement_environement/wizards.html" title="Project Wizards" class="chapter  " data-progress="5.4.1" style="left: 70.58823529411765%;"></a>
     
-        <a href="../developement_environement/runner.html" title="Runners" class="chapter done " data-progress="5.4.2" style="left: 73.52941176470588%;"></a>
+        <a href="../developement_environement/runner.html" title="Runners" class="chapter  " data-progress="5.4.2" style="left: 73.52941176470588%;"></a>
     
-        <a href="../kevoree_script_aka_kevscript/README.html" title="Kevoree Script (aka KevScript)" class="chapter done new-chapter" data-progress="6" style="left: 76.47058823529412%;"></a>
+        <a href="../kevoree_script_aka_kevscript/README.html" title="Kevoree Script (aka KevScript)" class="chapter  new-chapter" data-progress="6" style="left: 76.47058823529412%;"></a>
     
-        <a href="../kevoree_script_aka_kevscript/how_to_script.html" title="Usages" class="chapter done " data-progress="6.1" style="left: 79.41176470588235%;"></a>
+        <a href="../kevoree_script_aka_kevscript/how_to_script.html" title="Usages" class="chapter  " data-progress="6.1" style="left: 79.41176470588235%;"></a>
     
-        <a href="../kevoree_script_aka_kevscript/kevscript_commands.html" title="Syntax" class="chapter done " data-progress="6.2" style="left: 82.3529411764706%;"></a>
+        <a href="../kevoree_script_aka_kevscript/kevscript_commands.html" title="Syntax" class="chapter  " data-progress="6.2" style="left: 82.3529411764706%;"></a>
     
         <a href="../kevoree_script_aka_kevscript/management_commands.html" title="Management Commands" class="chapter  " data-progress="6.2.1" style="left: 85.29411764705883%;"></a>
     
@@ -586,9 +586,78 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_26">
+                    <section class="normal" id="section-gitbook_8">
                     
-                        <h1 id="kevscript-commands">KevScript Commands</h1>
+                        <h1 id="kwe-popups">KWE popups</h1>
+<h4 id="server-settings">Server settings</h4>
+<p>Because KWE is a standalone Web application, it gives you the possibility to specify the server you want to connect to.
+To specify your own KWE-server, use this popup.
+By default, <a href="http://editor.kevoree.org" target="_blank">editor.kevoree.org</a> uses an <strong>Express</strong> web server hosted on the same machine.</p>
+<blockquote>
+<p>You can clone the sources of <a href="https://github.com/kevoree/kevoree-web-editor-server" target="_blank">kevoree/kevoree-web-editor-server</a> and deploy it on your own servers</p>
+</blockquote>
+<p><img src="http://hosta.braindead.fr/raw/539980c11a9879c239a1a21e" alt="KWE Server settings"></p>
+<h4 id="kevoree-standard-libraries">Kevoree Standard Libraries</h4>
+<p>This popup allows you to merge Kevoree&#39;s official TypeDefinitions to your current model.
+Kevoree Standard Libraries are available (currently, June 2014) for 3 platforms:</p>
+<ul>
+<li>Java</li>
+<li>Javascript</li>
+<li>Cloud</li>
+</ul>
+<p>Once the list loaded, you can select wanted libraries and hit the <strong>Merge libraries</strong> button and wait for the server you are connected to (specified in the popup title after @), to answer your request with the according Kevoree model.</p>
+<p><img src="http://hosta.braindead.fr/raw/539980bd1a9879c239a1a21d" alt="KWE Std Libs"></p>
+<h4 id="from-custom-repository">From custom repository</h4>
+<p>If you want to merge your own Kevoree libraries from a custom Maven repository you can by using this popup.
+This will trigger the resolving server-side, then it will retrieve the model of your library (still server-side) and send it back to KWE, resulting in a merge of your current KWE model and the one you have specified in this popup.</p>
+<p><img src="http://hosta.braindead.fr/raw/539980cc1a9879c239a1a221" alt="KWE Custom repo"></p>
+<h4 id="custom-push">Custom push</h4>
+<p>Sometimes you have to edit your model network attributes resulting in the impossibility for you to push your model to your platforms (your group WebSocket server won&#39;t be able to receive the model according to the new network attributes, because it is still launched on the old model network attributes)
+Using this popup, you can specify a group WebSocket server directly and ask for a push of your current model by pressing <strong>Push model</strong></p>
+<p><img src="http://hosta.braindead.fr/raw/539980cf1a9879c239a1a222" alt="KWE Custom push"></p>
+<h4 id="kevscript">KevScript</h4>
+<p>A <a href="http://kevoree.org/doc/#kevoree-script-aka-kevscript" target="_blank">Kevoree Script</a> (aka KevScript) editor providing syntax highlighting and auto-completion.
+By default, this KevScript editor content is dinamically created according to the current model (model2kevs processing), but you can also change the content by using the provided examples (dropdown selector in the top-right corner).
+Once you are done editing, you have two choices:</p>
+<ul>
+<li><strong>Download</strong>: saves the current KevScript to a <strong>.kevs</strong> file client-side</li>
+<li><strong>Run</strong>: process your script and updates the current Kevoree model in KWE</li>
+</ul>
+<p><img src="http://hosta.braindead.fr/raw/539993c91a9879c239a1a223" alt="KWE KevScript"></p>
+<p>The KevScript Editor also provides some shortcuts to improve user experience:</p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Shortcut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Search</td>
+<td>Ctrl+F</td>
+</tr>
+<tr>
+<td>Find next</td>
+<td>Ctrl+G</td>
+</tr>
+<tr>
+<td>Find previous</td>
+<td>Ctrl+Shift+G</td>
+</tr>
+<tr>
+<td>Replace</td>
+<td>Ctrl+Shift+F</td>
+</tr>
+<tr>
+<td>Replace all</td>
+<td>Ctrl+Shift+R</td>
+</tr>
+</tbody>
+</table>
+<h4 id="help">Help</h4>
+<p>This popup contains the whole list of shortcuts available in KWE, plus some useful information concerning the editor.</p>
+<p><img src="http://hosta.braindead.fr/raw/539980c91a9879c239a1a220" alt="KWE Help"></p>
 
                     
                     </section>
@@ -598,10 +667,10 @@
         </div>
 
         
-        <a href="../kevoree_script_aka_kevscript/how_to_script.html" class="navigation navigation-prev " aria-label="Previous page: Usages"><i class="fa fa-angle-left"></i></a>
+        <a href="../developement_environement/menu_bar_content.html" class="navigation navigation-prev " aria-label="Previous page: Menu bar content"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../kevoree_script_aka_kevscript/management_commands.html" class="navigation navigation-next " aria-label="Next page: Management Commands"><i class="fa fa-angle-right"></i></a>
+        <a href="../developement_environement/model_edition.html" class="navigation navigation-next " aria-label="Next page: Model Edition"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

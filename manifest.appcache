@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# Revision 1402670452030
+# Revision 1402670508309
 
 CACHE:
 developement_environement/README.html
@@ -8,6 +8,8 @@ developement_environement/create_a_new_project.html
 developement_environement/eclipse.html
 developement_environement/installation.html
 developement_environement/intellij.html
+developement_environement/known_protocols.html
+developement_environement/kwe_popups.html
 developement_environement/menu_bar_content.html
 developement_environement/model_edition.html
 developement_environement/run_kevoree_platform.html
@@ -31,10 +33,10 @@ making_a_component/README.html
 making_a_component/injected_services.html
 making_a_component/kevoree_runtime_options.html
 making_a_component/ports_definition.html
-making_a_component/the_annotation_api.html
 making_a_component/the_kevoree_maven_plugin.html
-making_a_component/write_tests_for_continuous_validation.html
+making_a_component/the_annotation_api.html
 modelsruntime/README.html
+making_a_component/write_tests_for_continuous_validation.html
 gitbook/app.js
 gitbook/fonts/fontawesome/FontAwesome.otf
 gitbook/fonts/fontawesome/fontawesome-webfont.eot
