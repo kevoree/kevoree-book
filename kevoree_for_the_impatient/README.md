@@ -1,6 +1,6 @@
 # Kevoree for the impatient
 
-> :warning: Kevoree Browser Runtime is still under heavy work; expect things to break randomly :)
+> <span class="warning-bloc"><span class="fa fa-exclamation-triangle fa-lg orange"></span> Kevoree Browser Runtime is still under heavy work; expect things to break randomly :)
 
 ### You want to see something running fast...ok
 
