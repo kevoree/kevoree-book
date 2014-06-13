@@ -20,7 +20,9 @@
    * [Standalone Editor](developement_environement/standalone_editor.md)
    * [Web Editor](developement_environement/web_editor.md)
        * [Menu bar content](developement_environement/menu_bar_content.md)
+       * [KWE popups](developement_environement/kwe_popups.md)
        * [Model Edition](developement_environement/model_edition.md)
+       * [Known protocols](developement_environement/known_protocols.md)
    * [Eclipse](developement_environement/eclipse.md)
        * [Project Wizards](developement_environement/wizards.md)
        * [Runners](developement_environement/runner.md)
@@ -33,4 +35,3 @@
 * [Kevoree Cloud](cloud_management_with_kevoree/README.md)
    * [Available mappings](cloud_management_with_kevoree/available_mappings_to_infrastructure.md)
    * [Boot2Kevoree](cloud_management_with_kevoree/boot2kevoree.md)
-

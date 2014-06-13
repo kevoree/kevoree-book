@@ -39,7 +39,3 @@ add node1 : JavaNode
 We have added two `add` statements, one for `node0 : Javascript` and one for `node1 : JavaNode`. This will result in the addition of two nodes in the model editor canvas:
 
 ![KWE add instances](http://hosta.braindead.fr/raw/539998931a9879c239a1a225)
-
-### Known protocols
-#### Kevoree groups WebSocket protocol
-Kevoree uses Groups to share models between Node platforms. Each group has there own implementation and therefore uses its own protocol. In order to communicate with the groups, KWE uses the built-in Javascript WebSocket implementation available in modern Web browsers. Thus, your running Kevoree platform must have a compatible WebSocket group in order to communicate with KWE.
