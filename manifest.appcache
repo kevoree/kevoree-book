@@ -1,11 +1,11 @@
 CACHE MANIFEST
-# Revision 1402652938443
+# Revision 1402654493514
 
 CACHE:
 index.html
 cloud_management_with_kevoree/README.html
-cloud_management_with_kevoree/sandbox_properties.html
 cloud_management_with_kevoree/available_mappings_to_infrastructure.html
+cloud_management_with_kevoree/boot2kevoree.html
 developement_environement/features.html
 developement_environement/README.html
 developement_environement/create_a_new_kevoree_entity.html
@@ -22,9 +22,12 @@ developement_environement/wizards.html
 getting_started/README.html
 kevoree_for_the_impatient/README.html
 kevoree_script_aka_kevscript/README.html
+kevoree_script_aka_kevscript/bindingsync_commands.html
+kevoree_script_aka_kevscript/crud_commands.html
 kevoree_script_aka_kevscript/dynamic_adaptation_of_a_kevoree_runtime.html
 kevoree_script_aka_kevscript/how_to_script.html
 kevoree_script_aka_kevscript/kevscript_commands.html
+kevoree_script_aka_kevscript/management_commands.html
 making_a_component/README.html
 making_a_component/kevoree_runtime_options.html
 making_a_component/process.html
