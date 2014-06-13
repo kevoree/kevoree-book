@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# Revision 1402670105868
+# Revision 1402670452030
 
 CACHE:
 developement_environement/README.html
@@ -31,7 +31,6 @@ making_a_component/README.html
 making_a_component/injected_services.html
 making_a_component/kevoree_runtime_options.html
 making_a_component/ports_definition.html
-making_a_component/process.html
 making_a_component/the_annotation_api.html
 making_a_component/the_kevoree_maven_plugin.html
 making_a_component/write_tests_for_continuous_validation.html
