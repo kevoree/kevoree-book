@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Process | The Kevoree Book</title>
+        <title>Distributed Models@Run.time | The Kevoree Book</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 0.5.2">
@@ -19,10 +19,10 @@
     <meta name="author" content="kevoree">
     
     
-    <link rel="next" href="../making_a_component/the_annotation_api.html" />
+    <link rel="next" href="../getting_started/README.html" />
     
     
-    <link rel="prev" href="../making_a_component/README.html" />
+    <link rel="prev" href="../index.html" />
     
 
         
@@ -34,7 +34,7 @@
 
 
         
-    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="4.1" data-basepath=".." data-revision="1402667323599">
+    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="1" data-basepath=".." data-revision="1402667323599">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -118,7 +118,7 @@
         
         
         <li>
-            <a href="https://github.com/kevoree/kevoree-tutorials/edit/master/making_a_component/process.md" target="blank" class="contribute-link">Edit and Contribute</a>
+            <a href="https://github.com/kevoree/kevoree-tutorials/edit/master/modelsruntime/README.md" target="blank" class="contribute-link">Edit and Contribute</a>
         </li>
         
 
@@ -498,7 +498,7 @@
             <div class="page-wrapper" tabindex="-1">
                 <div class="book-progress">
     <div class="bar">
-        <div class="inner" style="width: 15.151515151515152%;min-width: 12.121212121212121%;"></div>
+        <div class="inner" style="width: 3.0303030303030303%;min-width: 0%;"></div>
     </div>
     <div class="chapters">
     
@@ -506,13 +506,13 @@
     
         <a href="../modelsruntime/README.html" title="Distributed Models@Run.time" class="chapter done new-chapter" data-progress="1" style="left: 3.0303030303030303%;"></a>
     
-        <a href="../getting_started/README.html" title="Getting started" class="chapter done new-chapter" data-progress="2" style="left: 6.0606060606060606%;"></a>
+        <a href="../getting_started/README.html" title="Getting started" class="chapter  new-chapter" data-progress="2" style="left: 6.0606060606060606%;"></a>
     
-        <a href="../kevoree_for_the_impatient/README.html" title="Kevoree for the impatient" class="chapter done new-chapter" data-progress="3" style="left: 9.090909090909092%;"></a>
+        <a href="../kevoree_for_the_impatient/README.html" title="Kevoree for the impatient" class="chapter  new-chapter" data-progress="3" style="left: 9.090909090909092%;"></a>
     
-        <a href="../making_a_component/README.html" title="Making a component" class="chapter done new-chapter" data-progress="4" style="left: 12.121212121212121%;"></a>
+        <a href="../making_a_component/README.html" title="Making a component" class="chapter  new-chapter" data-progress="4" style="left: 12.121212121212121%;"></a>
     
-        <a href="../making_a_component/process.html" title="Process" class="chapter done " data-progress="4.1" style="left: 15.151515151515152%;"></a>
+        <a href="../making_a_component/process.html" title="Process" class="chapter  " data-progress="4.1" style="left: 15.151515151515152%;"></a>
     
         <a href="../making_a_component/the_annotation_api.html" title="The Annotation API" class="chapter  " data-progress="4.2" style="left: 18.181818181818183%;"></a>
     
@@ -575,15 +575,42 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_37">
+                    <section class="normal" id="section-gitbook_47">
                     
-                        <h1 id="process">Process</h1>
+                        <h1 id="distributed-models-run-time">Distributed Models@Run.time</h1>
+<p>The Kevoree project is build around the concept of Distributed Models@Run.time.
+This approach aims at taming the complexity of distributed adapted systems (DDAS).</p>
+<p><strong>What is complex ?</strong></p>
+<p><strong><strong>#Reason 1</strong></strong> To perform an adaptation, a system has to know technical details about deployed elements in order to do the provisionning.</p>
+<blockquote>
+<p>In Kevoree we propose to interact through an abstraction layer (model) which contains only simple primitive, thus, CRUD operations on elements. As result, adaptations are simpler and the complexity is delegate to the execution place (node) which as to know technical details to be able to perform them.</p>
+</blockquote>
+<p><strong><strong> Reason 2</strong></strong> System adaptations can be complex to plannify and introspection are complex.</p>
+<blockquote>
+<p>In Kevoree we propose to interact asynchronously with a local model layer in order to express forseen modification. These modification are then send to a node which plan them and execute.</p>
+</blockquote>
+<p>The principe of Models@Run.time can be explain in 4 step as depitect in the following figure:</p>
 <ol>
-<li>Create the business code of the component. Make sure it works by simply adding a main, that creates, starts and stops your component.</li>
-<li>Decorate your code with the Kevoree Annotations to specify that your class is a Kevoree Component, which are the Input ports, Required services, the Output ports, the Provided services, the parameters of your component and the services your require from the runtime.</li>
-<li>Compile your code using the Kevoree Annotation plugin, then the code compiler dependent of your implementation language.</li>
-<li>Enjoy !</li>
+<li>A system keep an update abstract of its state (for instance reflecting that currently he host 2 component)</li>
+<li>To perform an adaptation we interact asynchrously (only by modifying the abstraction)</li>
+<li>We send the model to a runtime, wich will apply the modification (using a diff) on the system</li>
+<li>The system now reflect the asked abstract, and next adaptation can be asked.</li>
 </ol>
+<p><img src="modelATruntime2.png" alt="modelATruntime"></p>
+<p><strong><strong> Reason 3</strong></strong> Distributed systems are often unsynchronized due to connection failed.</p>
+<blockquote>
+<p>In Kevoree, we propose to interact through an asynchronous model. Thus the system will take care using different strategy to send the model to other platform asynchrously as well. As depicted in the following figure using such strategy, to adapt a cluster we just have to broadcast a model (an image of them).</p>
+</blockquote>
+<p><img src="distModelAtRuntime.png" alt="modelATruntime"></p>
+<h3 id="the-big-picture-kevoree-in-one-image-ouch-">The big picture ! Kevoree in one image, ouch...</h3>
+<p>This last figure describe a distributed Kevoree architecture. Every node are executing some components (in orange) has a Models@Run.time layer, in other words, a local copy of their view of the world (in gray) containing their state and other nodes expecting states. To solve DDAS issues we thus just have to ensure that this vision is synchronized between all nodes, resulting in a global synchronization of the cluster components.</p>
+<p><img src="dmar2.png" alt="modelATruntime"></p>
+<h3 id="ok-then">Ok then</h3>
+<p>As a result in Kevoree if you want to deploy a web server on your neighbour phone, you just to</p>
+<blockquote>
+<p>getLocalModel.getNode(&quot;neighbour&quot;).add(&quot;WebServer&quot;).sync();</p>
+</blockquote>
+<p>Now you get it, Kevoree project is himself build to build complex adaptive system, by allowing to express simply complex distributed adaptations. As result we can build clever self-healing cluster of cloud servers, ubiquitous phones cohalition, ...</p>
 
                     
                     </section>
@@ -593,10 +620,10 @@
         </div>
 
         
-        <a href="../making_a_component/README.html" class="navigation navigation-prev " aria-label="Previous page: Making a component"><i class="fa fa-angle-left"></i></a>
+        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../making_a_component/the_annotation_api.html" class="navigation navigation-next " aria-label="Next page: The Annotation API"><i class="fa fa-angle-right"></i></a>
+        <a href="../getting_started/README.html" class="navigation navigation-next " aria-label="Next page: Getting started"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

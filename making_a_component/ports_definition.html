@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Process | The Kevoree Book</title>
+        <title>Ports definition | The Kevoree Book</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 0.5.2">
@@ -19,10 +19,10 @@
     <meta name="author" content="kevoree">
     
     
-    <link rel="next" href="../making_a_component/the_annotation_api.html" />
+    <link rel="next" href="../making_a_component/injected_services.html" />
     
     
-    <link rel="prev" href="../making_a_component/README.html" />
+    <link rel="prev" href="../making_a_component/the_annotation_api.html" />
     
 
         
@@ -34,7 +34,7 @@
 
 
         
-    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="4.1" data-basepath=".." data-revision="1402667323599">
+    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="4.2.1" data-basepath=".." data-revision="1402667323599">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -118,7 +118,7 @@
         
         
         <li>
-            <a href="https://github.com/kevoree/kevoree-tutorials/edit/master/making_a_component/process.md" target="blank" class="contribute-link">Edit and Contribute</a>
+            <a href="https://github.com/kevoree/kevoree-tutorials/edit/master/making_a_component/ports_definition.md" target="blank" class="contribute-link">Edit and Contribute</a>
         </li>
         
 
@@ -498,7 +498,7 @@
             <div class="page-wrapper" tabindex="-1">
                 <div class="book-progress">
     <div class="bar">
-        <div class="inner" style="width: 15.151515151515152%;min-width: 12.121212121212121%;"></div>
+        <div class="inner" style="width: 21.21212121212121%;min-width: 18.181818181818183%;"></div>
     </div>
     <div class="chapters">
     
@@ -514,9 +514,9 @@
     
         <a href="../making_a_component/process.html" title="Process" class="chapter done " data-progress="4.1" style="left: 15.151515151515152%;"></a>
     
-        <a href="../making_a_component/the_annotation_api.html" title="The Annotation API" class="chapter  " data-progress="4.2" style="left: 18.181818181818183%;"></a>
+        <a href="../making_a_component/the_annotation_api.html" title="The Annotation API" class="chapter done " data-progress="4.2" style="left: 18.181818181818183%;"></a>
     
-        <a href="../making_a_component/ports_definition.html" title="Ports definition" class="chapter  " data-progress="4.2.1" style="left: 21.21212121212121%;"></a>
+        <a href="../making_a_component/ports_definition.html" title="Ports definition" class="chapter done " data-progress="4.2.1" style="left: 21.21212121212121%;"></a>
     
         <a href="../making_a_component/injected_services.html" title="Injected Services" class="chapter  " data-progress="4.2.2" style="left: 24.242424242424242%;"></a>
     
@@ -575,15 +575,61 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_37">
+                    <section class="normal" id="section-gitbook_33">
                     
-                        <h1 id="process">Process</h1>
-<ol>
-<li>Create the business code of the component. Make sure it works by simply adding a main, that creates, starts and stops your component.</li>
-<li>Decorate your code with the Kevoree Annotations to specify that your class is a Kevoree Component, which are the Input ports, Required services, the Output ports, the Provided services, the parameters of your component and the services your require from the runtime.</li>
-<li>Compile your code using the Kevoree Annotation plugin, then the code compiler dependent of your implementation language.</li>
-<li>Enjoy !</li>
-</ol>
+                        <h1 id="ports-definition">Ports definition</h1>
+<h4 id="input-ports-provided-methods">Input Ports - Provided Methods</h4>
+<p>If you are used to Message-Oriented approaches, you just have to put a <code>@Input</code> annotation on the method you want to expose as an input port. If you are more familiar with Service-Oriented approaches, you will have to put a <code>@Provided</code> annotation on  each method you want to expose/offer.
+The port gets its name from the method name. The mapped methods have to declare a unique <code>Object</code>-typed parameter. In case this parameter is missing, the method will be called and any parameter from the caller will be dropped. In case the method has more than one parameter, an error will be triggered.
+In Kevoree, we have mixed the Message and Service oriented approaches. To this end, each call on a port can declare an optional <code>Callback</code> method. Any value returned from an <code>Input</code> or a <code>Provided</code> method will be forwarded to the caller and passed as parameter to the callback method it declared.</p>
+<blockquote>
+<p>Java</p>
+<hr>
+</blockquote>
+<pre><code class="lang-Java"><span class="hljs-annotation">@Input</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sayHelloTo</span>(Object msg) {...}
+
+<span class="hljs-annotation">@Provides</span>
+<span class="hljs-keyword">public</span> Boolean <span class="hljs-title">getTemp</span>() {...}
+</code></pre>
+<blockquote>
+<p>Kotlin</p>
+<hr>
+</blockquote>
+<pre><code class="lang-Kotlin">public Input void sayHelloTo(Object msg) {...}
+
+public Provides Boolean getTemp() {...}
+</code></pre>
+<h4 id="output-ports-required-methods">Output Ports - Required Methods</h4>
+<p>If you are used to Message-Oriented approaches, you just have to put a <code>@Output</code> annotation on a field of the class that will host the port. This field has to be typed as <code>Port</code> from the Kevoree API. If you are more familiar with Service-Oriented approaches, you will have to put a <code>@Required</code> annotation on  each method you want to use.
+The port gets its name from the field name.
+In Kevoree, we have mixed the Message and Service oriented approaches. To this end, each call on a port can declare an optional <code>Callback</code> method. This method is called as soon as the execution of the call is completed. The parameter of the callback is the value of the return of the <code>Input / Provided</code> port connected.</p>
+<blockquote>
+<p>Java</p>
+<hr>
+<p><strong>Without callback</strong></p>
+</blockquote>
+<pre><code class="lang-Java"><span class="hljs-annotation">@Output</span>
+<span class="hljs-keyword">private</span> org.kevoree.api.Port helloProduced;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onHelloProduced</span>(String greetingMessage) {
+    helloProduced.send(greetingMessage);
+}
+</code></pre>
+<blockquote>
+<p><strong>With callback</strong></p>
+</blockquote>
+<pre><code class="lang-Java"><span class="hljs-annotation">@Required</span>
+<span class="hljs-keyword">private</span> org.kevoree.api.Port userDecision;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">askUser</span>(String questionMessage) {
+    userDecision.call(greetingMessage, <span class="hljs-keyword">new</span> Callback() {
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span>(Object result) {
+            <span class="hljs-keyword">return</span> (Boolean)result;
+        }
+    });
+}
+</code></pre>
 
                     
                     </section>
@@ -593,10 +639,10 @@
         </div>
 
         
-        <a href="../making_a_component/README.html" class="navigation navigation-prev " aria-label="Previous page: Making a component"><i class="fa fa-angle-left"></i></a>
+        <a href="../making_a_component/the_annotation_api.html" class="navigation navigation-prev " aria-label="Previous page: The Annotation API"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../making_a_component/the_annotation_api.html" class="navigation navigation-next " aria-label="Next page: The Annotation API"><i class="fa fa-angle-right"></i></a>
+        <a href="../making_a_component/injected_services.html" class="navigation navigation-next " aria-label="Next page: Injected Services"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

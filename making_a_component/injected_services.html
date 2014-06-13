@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Process | The Kevoree Book</title>
+        <title>Injected Services | The Kevoree Book</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 0.5.2">
@@ -19,10 +19,10 @@
     <meta name="author" content="kevoree">
     
     
-    <link rel="next" href="../making_a_component/the_annotation_api.html" />
+    <link rel="next" href="../making_a_component/the_kevoree_maven_plugin.html" />
     
     
-    <link rel="prev" href="../making_a_component/README.html" />
+    <link rel="prev" href="../making_a_component/ports_definition.html" />
     
 
         
@@ -34,7 +34,7 @@
 
 
         
-    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="4.1" data-basepath=".." data-revision="1402667323599">
+    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="4.2.2" data-basepath=".." data-revision="1402667323599">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -118,7 +118,7 @@
         
         
         <li>
-            <a href="https://github.com/kevoree/kevoree-tutorials/edit/master/making_a_component/process.md" target="blank" class="contribute-link">Edit and Contribute</a>
+            <a href="https://github.com/kevoree/kevoree-tutorials/edit/master/making_a_component/injected_services.md" target="blank" class="contribute-link">Edit and Contribute</a>
         </li>
         
 
@@ -498,7 +498,7 @@
             <div class="page-wrapper" tabindex="-1">
                 <div class="book-progress">
     <div class="bar">
-        <div class="inner" style="width: 15.151515151515152%;min-width: 12.121212121212121%;"></div>
+        <div class="inner" style="width: 24.242424242424242%;min-width: 21.21212121212121%;"></div>
     </div>
     <div class="chapters">
     
@@ -514,11 +514,11 @@
     
         <a href="../making_a_component/process.html" title="Process" class="chapter done " data-progress="4.1" style="left: 15.151515151515152%;"></a>
     
-        <a href="../making_a_component/the_annotation_api.html" title="The Annotation API" class="chapter  " data-progress="4.2" style="left: 18.181818181818183%;"></a>
+        <a href="../making_a_component/the_annotation_api.html" title="The Annotation API" class="chapter done " data-progress="4.2" style="left: 18.181818181818183%;"></a>
     
-        <a href="../making_a_component/ports_definition.html" title="Ports definition" class="chapter  " data-progress="4.2.1" style="left: 21.21212121212121%;"></a>
+        <a href="../making_a_component/ports_definition.html" title="Ports definition" class="chapter done " data-progress="4.2.1" style="left: 21.21212121212121%;"></a>
     
-        <a href="../making_a_component/injected_services.html" title="Injected Services" class="chapter  " data-progress="4.2.2" style="left: 24.242424242424242%;"></a>
+        <a href="../making_a_component/injected_services.html" title="Injected Services" class="chapter done " data-progress="4.2.2" style="left: 24.242424242424242%;"></a>
     
         <a href="../making_a_component/the_kevoree_maven_plugin.html" title="The Kevoree Maven Plugin" class="chapter  " data-progress="4.3" style="left: 27.272727272727273%;"></a>
     
@@ -575,15 +575,74 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_37">
+                    <section class="normal" id="section-gitbook_27">
                     
-                        <h1 id="process">Process</h1>
-<ol>
-<li>Create the business code of the component. Make sure it works by simply adding a main, that creates, starts and stops your component.</li>
-<li>Decorate your code with the Kevoree Annotations to specify that your class is a Kevoree Component, which are the Input ports, Required services, the Output ports, the Provided services, the parameters of your component and the services your require from the runtime.</li>
-<li>Compile your code using the Kevoree Annotation plugin, then the code compiler dependent of your implementation language.</li>
-<li>Enjoy !</li>
-</ol>
+                        <h1 id="injected-services">Injected Services</h1>
+<h4 id="kevoree-services-injection">Kevoree services injection</h4>
+<p>Several services from the Kevoree runtime can be injected into a component, channel, group or node, on demand. To do so, just place a <code>KevoreeInject</code> annottaion on a variable typed by the servcie you need. The services available are:
+<strong>ModelService</strong>
+<strong>BootstrapService</strong>
+<strong>KevScriptService</strong>
+<strong>Context</strong>
+<strong>ChannelContext</strong></p>
+<blockquote>
+<p>Java</p>
+<hr>
+</blockquote>
+<pre><code class="lang-Java"><span class="hljs-annotation">@KevoreeInject</span>
+ChannelContext channelContext;
+</code></pre>
+<blockquote>
+<p>Kotlin</p>
+<hr>
+</blockquote>
+<pre><code class="lang-kotlin">KevoreeInject ChannelContext channelContext;
+</code></pre>
+<p>The ModelService interface offers several methods to trigger model modification and by the way give an access to trigger adaptations.</p>
+<h4 id="life-cycle">Life Cycle</h4>
+<p>In Kevoree, Components, Channels, Groups and Nodes have a Life Cycle.
+Thus, the runtime must be able to  start, stop and update these elements when needed.
+Depending on these elements&#39; implementation, it may sometimes be required to perform some actions when stopping, starting or updating them.
+Life Cycle annotations are here to allow you to specify the methods to call on start, stop or update.
+There is no constraint on the method you select for these operations.
+<span class="warning-bloc"><span class="fa fa-exclamation-triangle fa-lg orange"></span> Be cautious about what you do in these methods, because you can freeze the entire runtime if you create a deadlock !</span></p>
+<blockquote>
+<p>Java</p>
+<hr>
+</blockquote>
+<pre><code class="lang-Java"><span class="hljs-annotation">@Start</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">startComponent</span>() {...}
+
+<span class="hljs-annotation">@Stop</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">stopComponent</span>() {...}
+
+<span class="hljs-annotation">@Update</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">updateComponent</span>() {...}
+</code></pre>
+<blockquote>
+<p>Kotlin</p>
+<hr>
+</blockquote>
+<pre><code class="lang-kotlin">Start fun startComponent(){...}
+
+Stop fun stopComponent(){...}
+
+Update fun updateComponent(){...}
+</code></pre>
+<h4 id="model-listeners">Model Listeners</h4>
+<p>Through inject services, Kevoree entities can register listener on model modification and so on all system update.
+User has to implement the interface <strong><em>ModelListener</em></strong> and perform adaptatoin analysis directly into the callback method <strong><em>modelUpdate</em></strong>.</p>
+<pre><code class="lang-java"><span class="hljs-annotation">@ComponentType</span>
+<span class="hljs-keyword">public</span> UpdateListener implement ModelListener {
+    <span class="hljs-annotation">@KevoreeInject</span>
+    ModelService modelService;
+
+   modelService.registerModelListener(<span class="hljs-keyword">this</span>);
+
+   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">modelUpdate</span>(event....){...}
+
+}
+</code></pre>
 
                     
                     </section>
@@ -593,10 +652,10 @@
         </div>
 
         
-        <a href="../making_a_component/README.html" class="navigation navigation-prev " aria-label="Previous page: Making a component"><i class="fa fa-angle-left"></i></a>
+        <a href="../making_a_component/ports_definition.html" class="navigation navigation-prev " aria-label="Previous page: Ports definition"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../making_a_component/the_annotation_api.html" class="navigation navigation-next " aria-label="Next page: The Annotation API"><i class="fa fa-angle-right"></i></a>
+        <a href="../making_a_component/the_kevoree_maven_plugin.html" class="navigation navigation-next " aria-label="Next page: The Kevoree Maven Plugin"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
