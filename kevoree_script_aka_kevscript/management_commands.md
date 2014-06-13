@@ -1,5 +1,10 @@
 # Management Commands
 
+To configure code and type definition source (repositories), KevScript offer several commands.
+Following, Models@Run.time terminology, any configuration of Kevoree platforms, even IP definition is done through the model, and thus through the KevScript commands.
+
+In this sub-section, we cover how to include type definitions from maven repositories and also how to configure IP informations.
+
 **Comments**
 If you want to comment a line in your KevScript, here you go.
 ```

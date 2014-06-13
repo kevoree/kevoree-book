@@ -1,4 +1,4 @@
-# Available mappings to infrastructure
+# Available mappings to infrastructures
 
 Each Kevoree node types can refine the creation of child nodes. Each of them, offers several virtualization capabilities.
 

@@ -22,3 +22,14 @@ You can also specify the name of the node you want to launch.
 	</configuration>
 </plugin>
 ```
+
+### Available actions
+
+Mainly the Kevoree maven plugin is automatically execute @CompileTime in order to put additional informations in the JAR. *(Mainly model fragment of currently developed type definitions)*.
+
+Additionally from this plugin user can execute directly the root kevScript file refered in the configuration using the following command:
+
+> mvn kev:run
+
+This will execute Kevoree directly in the maven environement.
+
