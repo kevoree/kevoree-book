@@ -1,6 +1,6 @@
 # Kevoree for the impatient
 
-> <span class="warning-bloc"><span class="fa fa-exclamation-triangle fa-lg orange"></span> Kevoree Browser Runtime is still under heavy work; expect things to break randomly :)
+> Kevoree Browser Runtime is still under heavy work; expect things to break randomly :)
 
 ### You want to see something running fast...ok
 
@@ -18,7 +18,7 @@
 7. You should see a new component in you log
     ![hello](hello.png)
 
-### You want to develop your own component, here is a short tutorial to install a developement environement
+### You want to develop your own component, here is a short tutorial to install a development environment
 
 1. Install JDK8: https://jdk8.java.net/
 2. Install IntelliJ IDE : http://www.jetbrains.com/idea/download/
