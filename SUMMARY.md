@@ -10,6 +10,10 @@
    * [The Kevoree Maven Plugin](making_a_component/the_kevoree_maven_plugin.md)
    * [Kevoree Runtime options](making_a_component/kevoree_runtime_options.md)
    * [Write tests for continuous validation](making_a_component/write_tests_for_continuous_validation.md)
+   * [Advanced: Make a Component with ThingML](making_a_component/advanced_make_a_component_with_thingml.md)
+       * [Define a ThingML Component](making_a_component/define_a_thingml_component.md)
+       * [Define the Behavior](making_a_component/define_the_behavior.md)
+       * [Compile to Java and Wrap into Kevoree](making_a_component/compile_to_java_and_wrap_into_kevoree.md)
 * [Development Environment](developement_environement/README.md)
    * [IntelliJ](developement_environement/intellij.md)
        * [Installation](developement_environement/installation.md)
@@ -34,3 +38,4 @@
 * [Kevoree Cloud](cloud_management_with_kevoree/README.md)
    * [Available mappings](cloud_management_with_kevoree/available_mappings_to_infrastructure.md)
    * [Boot2Kevoree](cloud_management_with_kevoree/boot2kevoree.md)
+
