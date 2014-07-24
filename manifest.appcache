@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# Revision 1402672426113
+# Revision 1406210017912
 
 CACHE:
 developement_environement/README.html
@@ -29,8 +29,12 @@ kevoree_script_aka_kevscript/crud_commands.html
 kevoree_script_aka_kevscript/how_to_script.html
 kevoree_script_aka_kevscript/kevscript_commands.html
 kevoree_script_aka_kevscript/management_commands.html
-making_a_component/README.html
 making_a_component/injected_services.html
+making_a_component/README.html
+making_a_component/compile_to_java_and_wrap_into_kevoree.html
+making_a_component/define_a_thingml_component.html
+making_a_component/define_the_behavior.html
+making_a_component/advanced_make_a_component_with_thingml.html
 making_a_component/kevoree_runtime_options.html
 making_a_component/ports_definition.html
 making_a_component/the_annotation_api.html
