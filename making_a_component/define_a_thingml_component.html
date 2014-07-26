@@ -34,7 +34,7 @@
 
 
         
-    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="4.5.1" data-basepath=".." data-revision="1406210352478">
+    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="4.5.1" data-basepath=".." data-revision="1406378408808">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -916,8 +916,53 @@
                     <section class="normal" id="section-gitbook_35">
                     
                         <h1 id="define-a-thingml-component">Define a ThingML Component</h1>
-<p>TODO</p>
+<p>The core concept of ThingML is thing. A thing defines a component which can send and receive a set of messages asynchronously. Messages are sent and received via ports. The overall behaviour of a thing is defined using a state machine.
+Here is the syntax for the definition of a thing:</p>
+<pre><code>// definition of an empty thing
+thing myThing {
+  /* Some properties */
+  /* Some messages */
+  /* Some ports */
+  /* Some state machines */
+}
+</code></pre><p>Properties are declared, initialized and manipulated similarly as in C or Java. ThingML state machines communicate by exchanging messages in an asynchronous way. The declaration of a message in ThingML is quite similar, from a syntactical point of view, to the declaration of methods in a Java interface (without any return type):</p>
+<pre><code>//definition of a message with two parameters
+message sendState(name : String, state : DigitalState );
+</code></pre><p>Ports allow grouping messages into coherent units. Basically, a thing providing a service will declare something like:</p>
+<pre><code>thing MyThingProvidingServiceA {
+  //request to get the status of the sensor called name
+  message getState(name : String);
+  //response
+  message sendState(name : String, state : DigitalState );
 
+  provided port ServiceA {
+    receives getState
+    sends sendState
+  }
+}
+</code></pre><p>Even though ThingML is not an object-oriented programming (OOP) language, and thus does not provide plain inheritance, it provides some basic mechanisms to improve the modularity/reusability of fragments of ThingML provides. The notion of thing fragment allows designer to specify interfaces. A thing fragment can declare messages and ports, but does not contain any behaviour. Typically, the top thing fragment will only contain the set of messages that are relevant for a given service. Two other thing fragments will include this former fragment and organize the messages into ports, as follows:</p>
+<ul>
+<li>The thing fragment providing the service will specify which messages it could receive, and which messages it could send, and organize them into ports.</li>
+<li>The thing fragment requiring the service will basically organize the messages into a mirror structure, so that it is possible to connect both things.</li>
+</ul>
+<p>Typically, thing fragments only declare some messages, but they could also define any feature (such as properties) we can find in plain things (except behaviour).
+The previous code fragment would then be refactored into:</p>
+<pre><code>//Interface for the service A
+thing fragment ServiceAMsgs {
+  //request to get the status of the sensor called name
+  message getState(name : String);
+  //response
+  message sendState(name : String, state : DigitalState );
+}
+
+//Concrete thing providing A
+thing MyThingProvidingServiceA  includes ServiceAMsgs{
+  provided port ServiceA {
+    receives getState
+    sends sendState
+  }
+}
+</code></pre>
                     
                     </section>
                 
