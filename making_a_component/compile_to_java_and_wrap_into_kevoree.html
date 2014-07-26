@@ -34,7 +34,7 @@
 
 
         
-    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="4.5.3" data-basepath=".." data-revision="1406378408808">
+    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="4.5.3" data-basepath=".." data-revision="1406379456998">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -916,7 +916,176 @@
                     <section class="normal" id="section-gitbook_34">
                     
                         <h1 id="compile-to-java-and-wrap-into-kevoree">Compile to Java and Wrap into Kevoree</h1>
-<p>TODO</p>
+<p>Let&#39;s consider a simple ThingML program made of two things, basically involving message to deal with a timer:</p>
+<pre><code>thing fragment TimerMsgs {
+    // Start the Timer
+    message timer_start(delay : Integer);
+    // Cancel the Timer
+    message timer_cancel();
+    // Notification that the timer has expired
+    message timer_timeout();
+}
+</code></pre><p>First, a timer:</p>
+<pre><code>thing fragment Timer includes TimerMsgs
+{
+    provided port timer
+    {
+        sends timer_timeout
+        receives timer_start, timer_cancel
+    }
+}
+
+//Java implementation of the timer
+datatype JavaTimer
+@java_type &quot;java.util.Timer&quot;;
+
+datatype JavaTimerTask
+@java_type &quot;java.util.TimerTask&quot;;
+
+// Manage a set of software timers.
+thing TimerJava includes Timer
+@java_interface &quot;org.thingml.timer.TimerObserver&quot;
+@thingml_maven_dep &quot;org.thingml.utils&quot;
+{
+
+    readonly property javaTimer : JavaTimer = &#39;new java.util.Timer()&#39;
+    property javaTimerTask : JavaTimerTask
+
+    function onTimeout()@override &quot;true&quot;
+    do
+        timer!timer_timeout()
+    end
+
+    function cancel()
+    do
+      if(not (javaTimerTask == &#39;null&#39;))
+      do
+        &#39;&#39; &amp; javaTimerTask &amp; &#39;.cancel();&#39;
+        &#39;&#39; &amp; javaTimerTask &amp; &#39; = null;&#39;
+      end
+      &#39;&#39; &amp; javaTimer &amp; &#39;.purge();&#39;
+    end
+
+    function start(delay : Integer)
+    do
+        cancel()
+        javaTimerTask = &#39;new org.thingml.timer.ThingMLTimerTask(this)&#39;
+        &#39;&#39; &amp; javaTimer &amp; &#39;.schedule(&#39; &amp; javaTimerTask &amp; &#39;, (long)&#39; &amp; delay &amp; &#39;);&#39;
+    end
+
+    statechart SoftTimer init default {
+        state default {
+          internal start
+            event m : timer?timer_start
+            guard m.delay &gt; 0
+            action do
+                start(m.delay)
+            end
+
+          internal cancel
+            event m : timer?timer_cancel
+            action cancel()
+        }
+    }
+}
+</code></pre><p>Second, a simple client:</p>
+<pre><code>thing fragment TimerClient includes TimerMsgs
+{
+    required port timer
+    {
+        receives timer_timeout
+        sends timer_start, timer_cancel
+    }
+
+}
+
+thing TimerClientJava includes TimerClient
+{
+    statechart Default init Tick {
+
+        property counter : Integer = 0
+
+        state Tick {
+            on entry
+            do
+                timer!timer_start(1000)
+            end
+
+
+            transition tock -&gt; Tick
+            event timer?timer_timeout
+            guard counter%2 == 0
+            action do
+                print(&quot;tick&quot;)
+                print(counter)
+                counter = counter + 1
+            end
+
+            internal event tick : timer?timer_timeout
+            guard counter%2 == 1
+            action do
+                print(&quot;tock&quot;)
+                print(counter)
+                counter = counter + 1
+                timer!timer_start(5000)
+            end
+        }
+
+    }
+
+}
+</code></pre><p>We then need to define a configuration, specifying how to connect the timer and the client:</p>
+<pre><code>configuration TestTimerJava {
+    instance timer : TimerJava
+    instance client : TimerClientJava
+    connector client.timer =&gt; timer.timer
+}
+</code></pre><p>This ThingML program can then be compiled (using the standalone editor) to Java. In the compiler Menu, select Java/JASM. This will generate the Java code, wrap it into a Maven project, compile it and run it. In the terminal/console, you should see:</p>
+<pre><code>tick
+0
+tock
+1
+tick
+2
+tock
+3
+</code></pre><p>Now, to wrap this program into Kevoree, just select, in the compiler menu, Java/Kevoree. This will generate a set of wrappers that exposes the ThingML components (things) as Kevoree components, and will update the pom.xml file to include the necessary Kevoree plugins. In addition, it will also generate a Kevscript file corresponding to the initial configuration of the system, as described in the ThingML configuration:</p>
+<pre><code>repo &quot;http://repo1.maven.org/maven2&quot;
+repo &quot;http://maven.thingml.org&quot;
+
+//include standard Kevoree libraries
+include mvn:org.kevoree.library.java:org.kevoree.library.java.javaNode:release
+include mvn:org.kevoree.library.java:org.kevoree.library.java.channels:release
+include mvn:org.kevoree.library.java:org.kevoree.library.java.ws:release
+
+//include external libraries that may be needed by ThingML components
+include mvn:org.thingml:org.thingml.utils:snapshot
+
+//include Kevoree wrappers of ThingML components
+include mvn:org.thingml.generated:TestTimerJava:1.0-SNAPSHOT
+
+//create a default Java node
+add node0 : JavaNode
+set node0.log = &quot;false&quot;
+//create a default group to manage the node(s)
+add sync : WSGroup
+set sync.port/node0 = &quot;9000&quot;
+attach node0 sync
+
+//instantiate Kevoree/ThingML components
+add node0.TimerClientJava_TestTimerJava_client : KTimerClientJava
+add node0.TimerJava_TestTimerJava_timer : KTimerJava
+
+//instantiate Kevoree channels and bind component
+add channel_1324969411 : SyncBroadcast
+bind node0.TimerClientJava_TestTimerJava_client.timerPort_out channel_1324969411
+bind node0.TimerJava_TestTimerJava_timer.timerPort channel_1324969411
+add channel_1324969411_re : SyncBroadcast
+bind node0.TimerClientJava_TestTimerJava_client.timerPort channel_1324969411_re
+bind node0.TimerJava_TestTimerJava_timer.timerPort_out channel_1324969411_re
+start sync
+start node0
+</code></pre><p>After you recompile the project (using <code>mvn clean install</code>), you can open this KevScripts into the Kevoree editor and deploy it using Kevoree as a normal Java node.</p>
 
                     
                     </section>
