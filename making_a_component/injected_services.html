@@ -34,7 +34,7 @@
 
 
         
-    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="4.1.2" data-basepath=".." data-revision="1406379456998">
+    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="4.1.2" data-basepath=".." data-revision="1406470957002">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -917,37 +917,33 @@
                     
                         <h1 id="injected-services">Injected Services</h1>
 <h4 id="kevoree-services-injection">Kevoree services injection</h4>
-<p>Several services from the Kevoree runtime can be injected into a component, channel, group or node, on demand. To do so, just place a <code>KevoreeInject</code> annottaion on a variable typed by the servcie you need. The services available are:
-<strong>ModelService</strong>
-<strong>BootstrapService</strong>
-<strong>KevScriptService</strong>
-<strong>Context</strong>
-<strong>ChannelContext</strong></p>
-<blockquote>
-<p>Java</p>
+<p>Several services from the Kevoree runtime can be injected into a component, channel, group or node, on demand. To do so, just place a <code>KevoreeInject</code> annotation on a variable typed by the servcie you need. The services available are:</p>
+<ul>
+<li><code>ModelService</code></li>
+<li><code>BootstrapService</code></li>
+<li><code>KevScriptService</code></li>
+<li><code>Context</code></li>
+<li><code>ChannelContext</code></li>
+</ul>
+<h5 id="-java-"><em>Java</em></h5>
 <hr>
-</blockquote>
 <pre><code class="lang-Java"><span class="hljs-annotation">@KevoreeInject</span>
 ChannelContext channelContext;
 </code></pre>
-<blockquote>
-<p>Kotlin</p>
+<h5 id="-kotlin-"><em>Kotlin</em></h5>
 <hr>
-</blockquote>
 <pre><code class="lang-kotlin">KevoreeInject ChannelContext channelContext;
 </code></pre>
 <p>The ModelService interface offers several methods to trigger model modification and by the way give an access to trigger adaptations.</p>
 <h4 id="life-cycle">Life Cycle</h4>
 <p>In Kevoree, Components, Channels, Groups and Nodes have a Life Cycle.
-Thus, the runtime must be able to  start, stop and update these elements when needed.
+Thus, the runtime must be able to start, stop and update these elements when needed.
 Depending on these elements&#39; implementation, it may sometimes be required to perform some actions when stopping, starting or updating them.
 Life Cycle annotations are here to allow you to specify the methods to call on start, stop or update.
 There is no constraint on the method you select for these operations.
 <span class="warning-bloc"><span class="fa fa-exclamation-triangle fa-lg orange"></span> Be cautious about what you do in these methods, because you can freeze the entire runtime if you create a deadlock !</span></p>
-<blockquote>
-<p>Java</p>
+<h5 id="-java-"><em>Java</em></h5>
 <hr>
-</blockquote>
 <pre><code class="lang-Java"><span class="hljs-annotation">@Start</span>
 <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">startComponent</span>() {...}
 
@@ -957,10 +953,8 @@ There is no constraint on the method you select for these operations.
 <span class="hljs-annotation">@Update</span>
 <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">updateComponent</span>() {...}
 </code></pre>
-<blockquote>
-<p>Kotlin</p>
+<h5 id="-kotlin-"><em>Kotlin</em></h5>
 <hr>
-</blockquote>
 <pre><code class="lang-kotlin">Start fun startComponent(){...}
 
 Stop fun stopComponent(){...}
@@ -968,8 +962,8 @@ Stop fun stopComponent(){...}
 Update fun updateComponent(){...}
 </code></pre>
 <h4 id="model-listeners">Model Listeners</h4>
-<p>Through inject services, Kevoree entities can register listener on model modification and so on all system update.
-User has to implement the interface <strong><em>ModelListener</em></strong> and perform adaptatoin analysis directly into the callback method <strong><em>modelUpdate</em></strong>.</p>
+<p>Through injected services, Kevoree entities can register listener on model modification and so on all system update.
+User has to implement the interface <code>ModelListener</code> and perform adaptatoin analysis directly into the callback method <code>modelUpdate</code>.</p>
 <pre><code class="lang-java"><span class="hljs-annotation">@ComponentType</span>
 <span class="hljs-keyword">public</span> UpdateListener implement ModelListener {
     <span class="hljs-annotation">@KevoreeInject</span>

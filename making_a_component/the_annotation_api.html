@@ -34,7 +34,7 @@
 
 
         
-    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="4.1" data-basepath=".." data-revision="1406379456998">
+    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="4.1" data-basepath=".." data-revision="1406470957002">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -916,20 +916,20 @@
                     <section class="normal" id="section-gitbook_43">
                     
                         <h1 id="the-annotation-api">The Annotation API</h1>
-<p>The Annotation API is made to provide a simple and flexible way to decorate your existing code to declare it as a <code>component</code>, <code>channel</code>, <code>node</code> or <code>group</code>.</p>
+<p>The Annotation API provides a simple and flexible way to decorate your existing code to declare it as a <code>component</code>, <code>channel</code>, <code>node</code> or <code>group</code>.</p>
 <h4 id="types">Types</h4>
-<p>1.<strong>Components</strong>
-New kind of Component are declared by placing a <code>@ComponentType</code> annotation on their implementation class.
-2.<strong>Channels</strong>
-The channels are in charge of the transport of messages and objects, from output to input ports. Each channel type has a different behavior (sync, async, parallel, sequential, first-answer, etc.) and is declared by putting a <code>@ChannelType</code> on its implementation class.
-3.<strong>Groups</strong>
-The groups are responsible for the dispatch and synchronization of the models between several nodes. Just as the channels, they can have different dispatch and synchronization policies for each type. They are declared by putting a <code>@GroupType</code> annotation on their implementation class.
-4.<strong>Nodes</strong>
-The nodes support the deployment of components or sub-nodes, so that the runtime always conforms to the last consistent model a node received. They are declared by putting a <code>@NodeType</code> annotation on their implementation class.</p>
-<blockquote>
-<p>Java</p>
+<ol>
+<li><strong>Components</strong>
+New kind of components are declared by placing a <code>@ComponentType</code> annotation on their implementation class.</li>
+<li><strong>Channels</strong>
+The channels are in charge of the transport of messages and objects, from output to input ports. Each channel type has a different behavior (sync, async, parallel, sequential, first-answer, etc.) and is declared by putting a <code>@ChannelType</code> on its implementation class.</li>
+<li><strong>Groups</strong>
+The groups are responsible for the dispatch and synchronization of the models between several nodes. Just as the channels, they can have different dispatch and synchronization policies for each type. They are declared by putting a <code>@GroupType</code> annotation on their implementation class.</li>
+<li><strong>Nodes</strong>
+The nodes support the deployment of components or sub-nodes, so that the runtime always conforms to the last consistent model a node received. They are declared by putting a <code>@NodeType</code> annotation on their implementation class.</li>
+</ol>
+<h5 id="-java-"><em>Java</em></h5>
 <hr>
-</blockquote>
 <pre><code>@ComponentType
 public class HelloProducerComponent{...}
 
@@ -942,10 +942,8 @@ public class WebSocketGroup {...}
 @NodeType
 @Library(name = &quot;Java&quot;)
 public class JavaNode implements org.kevoree.api.NodeType {...}
-</code></pre><blockquote>
-<p>Kotlin</p>
+</code></pre><h5 id="-kotlin-"><em>Kotlin</em></h5>
 <hr>
-</blockquote>
 <pre><code>public ComponentType class HelloProducerComponent{...}
 
 public ChannelType class AsyncBroadcast implements ChannelDispatch {...}
@@ -957,37 +955,29 @@ public NodeType class JavaNode implements org.kevoree.api.NodeType {...}
 <p>Parameters are sometimes useful to adapt the behavior of a piece of code. These parameters can be used to set the delay of a timeout, a display name of a frame, the color of a frame, etc.
 To declare a parameter, just declare a field in your class, and add to it the <code>@Param</code> annotation. The default value of a parameter has to be specified in the annotation as shown on the right.
 <span class="warning-bloc"><span class="fa fa-exclamation-triangle fa-lg orange"></span> Kevoree only supports the <code>Param</code> annottaion on <em>Primitive</em> types and their boxing equivalent.</span></p>
-<blockquote>
-<p>Java</p>
+<h5 id="-java-"><em>Java</em></h5>
 <hr>
-</blockquote>
 <pre><code class="lang-Java"><span class="hljs-annotation">@Param</span>
 String name;
 
 <span class="hljs-annotation">@Param</span> (defaultValue = <span class="hljs-string">"2000"</span>)
 <span class="hljs-keyword">int</span> delay = <span class="hljs-number">2000</span>;
 </code></pre>
-<blockquote>
-<p>Kotlin</p>
+<h5 id="-kotlin-"><em>Kotlin</em></h5>
 <hr>
-</blockquote>
 <pre><code class="lang-Kotlin">Param(defaultValue = &quot;default&quot;) var name : String = &quot;default&quot; ;
 </code></pre>
 <h4 id="library">Library</h4>
-<p>The Library annotation makes it possible for you to organize the components you create into virtual Libraries. It has nothing to do with the deployment, the location of the binaries or the behavior of your component. It can be whatever you want.
+<p>The Library annotation allows you to organize the components you create into virtual Libraries. It has nothing to do with the deployment, the location of the binaries or the behavior of your component. It can be whatever you want.
 <span class="warning-bloc"><span class="fa fa-exclamation-triangle fa-lg orange"></span> The Library annotation must always be placed after the type declaration annotation (i.e.: ComponentType, ChannelType, etc.).</span></p>
-<blockquote>
-<p>Java</p>
+<h5 id="-java-"><em>Java</em></h5>
 <hr>
-</blockquote>
 <pre><code class="lang-Java"><span class="hljs-annotation">@NodeType</span>
 <span class="hljs-annotation">@Library</span>(name = <span class="hljs-string">"Java"</span>)
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JavaNode</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">org</span>.<span class="hljs-title">kevoree</span>.<span class="hljs-title">api</span>.<span class="hljs-title">NodeType</span> {</span>...}
 </code></pre>
-<blockquote>
-<p>Kotlin</p>
+<h5 id="-kotlin-"><em>Kotlin</em></h5>
 <hr>
-</blockquote>
 <pre><code class="lang-kotlin">public ComponentType Library(name=&quot;Java&quot;) class HelloKotlin {...}
 </code></pre>
 

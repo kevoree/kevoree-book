@@ -34,7 +34,7 @@
 
 
         
-    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="4.4" data-basepath=".." data-revision="1406379456998">
+    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="4.4" data-basepath=".." data-revision="1406470957002">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -916,40 +916,28 @@
                     <section class="normal" id="section-gitbook_51">
                     
                         <h1 id="write-tests-for-continuous-validation">Write tests for continuous validation</h1>
-<p>Kevoree framework offers a JUnit extention to integrate behavioral testing of components, channels, groups and nodeTypes before their deployment. In details, this framework allows to launch a KevoreeRuntime, instanciate a model using the element to validate, and allows some adaptations and assertions on the console result. In order to use it, add the following dependency as test scope to your project. Several nodes can be started and monitored to evaluate the output stream and traces to early detect regressions.</p>
+<p>Kevoree framework offers a JUnit extention to integrate behavioral testing of components, channels, groups and nodeTypes before their deployment. In details, this framework allows you to launch a KevoreeRuntime, instanciate a model using the element to validate, perform some adaptations and write assertions on the console result. In order to use it, add the following dependency as test scope to your project. Several nodes can be started and monitored to evaluate the output stream and traces to early detect regressions.</p>
 <pre><code>        &lt;dependency&gt;
             &lt;groupId&gt;org.kevoree.tools&lt;/groupId&gt;
             &lt;artifactId&gt;org.kevoree.tools.test&lt;/artifactId&gt;
             &lt;version&gt;${kevoree.version}&lt;/version&gt;
             &lt;scope&gt;test&lt;/scope&gt;
         &lt;/dependency&gt;
-</code></pre><p>Then add in src/test/java a new class file ending with a name Test.
-As any JUnit test, each method with a @Test annotation is a unit test.
+</code></pre><p>Then add in <code>src/test/java</code> a new class file ending with a name Test.
+As any JUnit test, each method with a <code>@Test</code> annotation is a unit test.
 In addition to traditionnal assert methods, Kevoree Framework offers the following:</p>
 <p>Start a platform using a name and a bootfile, bootfile can be in resources folder or absolute path.</p>
-<blockquote>
-<p>bootstrap(&quot;node0&quot;, &quot;boot.kevs&quot;);</p>
-</blockquote>
+<p><code>bootstrap(&quot;node0&quot;, &quot;boot.kevs&quot;);</code></p>
 <p>Waits until the output of the node0 displays a line &quot;Bootstrap complete&quot;. This output is expect within 10000 milliseconds.</p>
-<blockquote>
-<p>waitLog(&quot;node0&quot;, &quot;node0/Bootstrap completed&quot;, 10000);</p>
-</blockquote>
+<p><code>waitLog(&quot;node0&quot;, &quot;node0/Bootstrap completed&quot;, 10000);</code></p>
 <p>Waits the completion of the execution of the kevScript on the node0</p>
-<blockquote>
-<p>exec(&quot;node0&quot;, &quot;set child1.started = \&quot;false\&quot;&quot;);</p>
-</blockquote>
+<p><code>exec(&quot;node0&quot;, &quot;set child1.started = \&quot;false\&quot;&quot;);</code></p>
 <p>Waits the completion of the deployement of the <code>model</code> in node0</p>
-<blockquote>
-<p>deploy(&quot;node0&quot;, model);</p>
-</blockquote>
+<p><code>deploy(&quot;node0&quot;, model);</code></p>
 <p>Gets the currentModel of the platform node0</p>
-<blockquote>
-<p>getCurrentModel(&quot;node0&quot;);</p>
-</blockquote>
+<p><code>getCurrentModel(&quot;node0&quot;);</code></p>
 <p>Destroys the platform node0</p>
-<blockquote>
-<p>shutdown(&quot;node0&quot;);</p>
-</blockquote>
+<p><code>shutdown(&quot;node0&quot;);</code></p>
 <p>Each method throw exception in case of errors, so no need to encapsulate them in a assert method, JUnit will grab the errors. Finally all platforms are automacally cleaned after test execution. So now you have everything to write a complete exemple to test the child management of JavaNode.</p>
 <pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SubChildrenTest</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">KevoreeTestCase</span> {</span>
     <span class="hljs-annotation">@Test</span>

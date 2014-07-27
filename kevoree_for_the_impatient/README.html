@@ -34,7 +34,7 @@
 
 
         
-    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="3" data-basepath=".." data-revision="1406379456998">
+    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="3" data-basepath=".." data-revision="1406470957002">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -917,7 +917,7 @@
                     
                         <h1 id="kevoree-for-the-impatient">Kevoree for the impatient</h1>
 <blockquote>
-<p>Kevoree Browser Runtime is still under heavy work; expect things to break randomly :)</p>
+<p>The Kevoree Browser Runtime is still under active development; expect things to break randomly :-) Please provide feedback (issue on GitHub), if it indeed breaks</p>
 </blockquote>
 <h3 id="you-want-to-see-something-running-fast-ok">You want to see something running fast...ok</h3>
 <ol>
@@ -937,26 +937,26 @@
 </ol>
 <h3 id="you-want-to-develop-your-own-component-here-is-a-short-tutorial-to-install-a-development-environment">You want to develop your own component, here is a short tutorial to install a development environment</h3>
 <ol>
-<li>Install JDK8: <a href="https://jdk8.java.net/" target="_blank">https://jdk8.java.net/</a></li>
-<li>Install IntelliJ IDE : <a href="http://www.jetbrains.com/idea/download/" target="_blank">http://www.jetbrains.com/idea/download/</a></li>
-<li>Install Kevoree Plugin in IntelliJ (Preferences &gt; Plugins &gt; Browser repositories &gt; Kevoree &gt; Install)</li>
+<li>Install <a href="https://jdk8.java.net/" target="_blank">JDK8</a></li>
+<li>Install <a href="http://www.jetbrains.com/idea/download/" target="_blank">IntelliJ IDE</a></li>
+<li>Install Kevoree Plugin in IntelliJ (<code>Preferences &gt; Plugins &gt; Browser repositories &gt; Kevoree &gt; Install</code>)</li>
 <li>Restart IntelliJ</li>
-<li>Create an Empty Kevoree Project (File &gt; New Project &gt; Kevoree &gt; ok)
+<li>Create an Empty Kevoree Project (<code>File &gt; New Project &gt; Kevoree &gt; ok</code>)
  <img src="firstScreen.png" alt="firstScreen"></li>
 <li>Update the version of Kevoree to desired one
  <img src="updateVersion.png" alt="updateVersion"></li>
-<li>Eventually refresh maven project if necessary
+<li>Refresh maven project if necessary
  <img src="refresh.png" alt="refresh"></li>
-<li>Ok you should see a demo component HelloWorld.java
+<li>Ok, you should see a demo component <code>HelloWorld.java</code>
  <img src="draft.png" alt="draft"></li>
-<li>Create a KevScript file in <strong><em>src/kevs</em></strong>
+<li>Create a KevScript file in <code>src/kevs</code>
  <img src="createKEVS.png" alt="createKEVS"></li>
-<li>Right and run it
+<li>Right click and run it
 <img src="runOne.png" alt="runOne"></li>
-<li>Open Kevoree editor : <a href="http://editor.kevoree.org" target="_blank">http://editor.kevoree.org</a> and load the current model (File &gt; Open from node and leave everything by default)</li>
-<li>Now edit the KevScript file and add the line<pre><code>add node0.hello : HelloWorld
+<li>Open <a href="http://editor.kevoree.org" target="_blank">Kevoree editor</a> and load the current model (<code>File &gt; Open from node</code> and leave everything by default)</li>
+<li>Now edit the KevScript file and add the line:<pre><code>add node0.hello : HelloWorld
 </code></pre></li>
-<li>Run it again, and reload the model, you should see the new component inside the node.
+<li>Run it again, and reload the model. You should see the new component inside the node.
 <img src="weditor.png" alt="weditor"></li>
 <li>Now add another HelloWord component using drag and drop and push the new model
 <img src="push.png" alt="push"></li>

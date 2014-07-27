@@ -34,7 +34,7 @@
 
 
         
-    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="4.1.1" data-basepath=".." data-revision="1406379456998">
+    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="4.1.1" data-basepath=".." data-revision="1406470957002">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -918,33 +918,30 @@
                         <h1 id="ports-definition">Ports definition</h1>
 <h4 id="input-ports-provided-methods">Input Ports - Provided Methods</h4>
 <p>If you are used to Message-Oriented approaches, you just have to put a <code>@Input</code> annotation on the method you want to expose as an input port. If you are more familiar with Service-Oriented approaches, you will have to put a <code>@Provided</code> annotation on  each method you want to expose/offer.
-The port gets its name from the method name. The mapped methods have to declare a unique <code>Object</code>-typed parameter. In case this parameter is missing, the method will be called and any parameter from the caller will be dropped. In case the method has more than one parameter, an error will be triggered.
-In Kevoree, we have mixed the Message and Service oriented approaches. To this end, each call on a port can declare an optional <code>Callback</code> method. Any value returned from an <code>Input</code> or a <code>Provided</code> method will be forwarded to the caller and passed as parameter to the callback method it declared.</p>
+The port gets its name from the method name. The mapped methods have to declare a unique <code>Object</code>-typed parameter. In case this parameter is missing, the method will be called and any parameter from the caller will be dropped. In case the method has more than one parameter, an error will be triggered.</p>
 <blockquote>
-<p>Java</p>
-<hr>
+<p>In Kevoree, we have mixed the Message and Service oriented approaches. To this end, each call on a port can declare an optional <code>Callback</code> method. This method is called as soon as the execution of the call is completed. The parameter of the callback is the value of the return of the <code>Input / Provided</code> port connected.</p>
 </blockquote>
+<h5 id="-java-"><em>Java</em></h5>
+<hr>
 <pre><code class="lang-Java"><span class="hljs-annotation">@Input</span>
 <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sayHelloTo</span>(Object msg) {...}
 
 <span class="hljs-annotation">@Provides</span>
 <span class="hljs-keyword">public</span> Boolean <span class="hljs-title">getTemp</span>() {...}
 </code></pre>
-<blockquote>
-<p>Kotlin</p>
+<h5 id="-kotlin-"><em>Kotlin</em></h5>
 <hr>
-</blockquote>
 <pre><code class="lang-Kotlin">public Input void sayHelloTo(Object msg) {...}
 
 public Provides Boolean getTemp() {...}
 </code></pre>
 <h4 id="output-ports-required-methods">Output Ports - Required Methods</h4>
 <p>If you are used to Message-Oriented approaches, you just have to put a <code>@Output</code> annotation on a field of the class that will host the port. This field has to be typed as <code>Port</code> from the Kevoree API. If you are more familiar with Service-Oriented approaches, you will have to put a <code>@Required</code> annotation on  each method you want to use.
-The port gets its name from the field name.
-In Kevoree, we have mixed the Message and Service oriented approaches. To this end, each call on a port can declare an optional <code>Callback</code> method. This method is called as soon as the execution of the call is completed. The parameter of the callback is the value of the return of the <code>Input / Provided</code> port connected.</p>
-<blockquote>
-<p>Java</p>
+The port gets its name from the field name.</p>
+<h5 id="-java-"><em>Java</em></h5>
 <hr>
+<blockquote>
 <p><strong>Without callback</strong></p>
 </blockquote>
 <pre><code class="lang-Java"><span class="hljs-annotation">@Output</span>
