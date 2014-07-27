@@ -18,11 +18,13 @@ Kevoree sources can be found at: http://git.kevoree.org
 
 ### Who?
 The development of Kevoree is currently supported by:
+
 1. University of Luxembourg
 2. Interdisciplinary Center for Security, Reliability and Trust (SnT), Luxembourg
 3. University of Rennes 1
 4. INRIA Rennes Bretagne-Attlantique
 
 The development of Kevoree is (or has been) funded by the following projects:
+
 1. [EU FP7 HEADS](http://heads-project.eu)
 
