@@ -1,12 +1,12 @@
 # Getting started
 
 ### Kevoree and Models
-Kevoree makes an intensive use of Models. Physically, models are structured files in JSON or XMI format, used to carry the description of a component, an entire library, the location where the binary files can be found and/or the description of a software system to deploy with all the component instances and their connections.
+Kevoree intensively relies on models, which are structured files in JSON or XMI format, used to carry the description of a component, an entire library, the location where the binary files can be found and/or the description of a software system to deploy with all the component instances and their connections.
 
 ### The Kevoree Editor
 
-The Kevoree Editor provides a model authoring tool specialized for Kevoree Models.
-It offers a Graphical Editor in which modifications on models are made principally using drag&drop mechanisms.
+The Kevoree Editor provides an authoring tool dedicated to Kevoree Models.
+It offers a Graphical Editor where Kevoree models can be intuitively designed using drag&drop mechanisms.
 It also embeds a Kevoree Scripting engine developed to simplify the modifications.
 
 1. Standalone Editor
@@ -17,7 +17,7 @@ It also embeds a Kevoree Scripting engine developed to simplify the modification
 
 > http://editor.kevoree.org
 
-it also embedded in Boot2Kevoree version
+it is also embeded in Boot2Kevoree version
 
 > boot2kevoree editor
 
@@ -26,7 +26,7 @@ and in Kevoree GUI distribution (just right clic on top right, and it will magic
 ![KevoreeGuiEditor](gui_editor.png)
 
 ### Kevoree Distributions
-Kevoree offers several runtime environments. Among others, the Java runtime of Kevoree wraps a Java Virtual Machine with all the necessary features to handle the deployment of models received from editors or local components.
+Kevoree offers several runtime environments (JVM, JavaScript, Android, Arduino). In particular, the Java runtime wraps a Java Virtual Machine with all the necessary features to handle the deployment of models received from editors or local components.
 
 * Use Kevoree for Cloud developement or without installing anything on your machine :
 
@@ -49,31 +49,31 @@ Kevoree offers several runtime environments. Among others, the Java runtime of K
 
 ### Usage
 
-For all Kevoree Java application you can start them by using
+All Kevoree Java applications can be started as follows:
 
-> java -jar kevoreeRuntime.jar (replace kevoreeRuntime by the right name of the file)
+`java -jar kevoreeRuntime.jar (replace kevoreeRuntime by the right name of the file)`
 
-or more simply by double clic.
+or simply by a double click.
 
 To run boot2kevoree (virtualbox need to be installed http://www.virtualbox.org/), simply copy the file in your path then:
 
-> boot2kevoree init
+`boot2kevoree init`
 
 This will download the .iso file and init the virtualmachine
 
-> boot2kevoree up
+`boot2kevoree up`
 
 This will start the boot2kevoree virtual machine
 
-> boot2kevoree editor
+`boot2kevoree editor`
 
 will run the editor
 
-> boot2kevoree ssh
+`boot2kevoree ssh`
 
 will log into the virtual machine (user:kevoree, password:tcuser)
 
-> boot2kevoree gui
+`boot2kevoree gui`
 
 will run the default Kevoree Cloud GUI, this will allow you to add/remove virtual machine
 
