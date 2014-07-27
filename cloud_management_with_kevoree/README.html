@@ -34,7 +34,7 @@
 
 
         
-    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="7" data-basepath=".." data-revision="1406471040278">
+    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="7" data-basepath=".." data-revision="1406484252703">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -918,14 +918,14 @@
                         <h1 id="cloud-management-with-kevoree">Cloud Management with Kevoree</h1>
 <p>Kevoree can be used as a Cloud management layer, simply by following this idea. If a node is a container, it can as well contains other nodes, which can then host components. In others words, simply by composing Nodes with can manage Cloud virtual infrastructures by mapping Kevoree nodes to virtual machines.</p>
 <p>Again, everything is about manipulating model, KevScript is then the simplest way to dynamically manipulate infrastructures.</p>
-<p><strong>Add nodes</strong>
-This allows to create a new virtual machine in another container. Here <code>infra0</code> is the container, in other words, one of the IaaS (infrastructure) nodes set. <code>vm0</code> is then a PaaS (platform) node, ready himself to host components.</p>
+<h4 id="add-nodes">Add nodes</h4>
+<p>This allows to create a new virtual machine in another container. Here <code>infra0</code> is the container, in other words, one of the IaaS (infrastructure) nodes set. <code>vm0</code> is then a PaaS (platform) node, ready himself to host components.</p>
 <pre><code>add infra0.vm0 : JavaNode
-</code></pre><p><strong>Remove nodes</strong>
-In the same manner, one can delete a node from his container.</p>
+</code></pre><h4 id="remove-nodes">Remove nodes</h4>
+<p>In the same manner, one can delete a node from his container.</p>
 <pre><code>remove infra0.vm0
-</code></pre><p><strong>Move nodes</strong>
-The move instruction is a migration command. It allows to migrate a virtual machine to another container.</p>
+</code></pre><h4 id="move-nodes">Move nodes</h4>
+<p>The move instruction is a migration command. It allows to migrate a virtual machine to another container.</p>
 <pre><code>move infra0.vm0 infra1
 </code></pre>
                     

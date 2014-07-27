@@ -34,7 +34,7 @@
 
 
         
-    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="6.2.3" data-basepath=".." data-revision="1406471040278">
+    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="6.2.3" data-basepath=".." data-revision="1406484252703">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -917,23 +917,23 @@
                     
                         <h1 id="binding-sync-commands">Binding/Sync Commands</h1>
 <p>After creation, Kevoree entities has to be binded to each others in order to exchange message or models.
-<strong>Bind</strong> and <strong>Unbind</strong> KevScript commands allow to connect <strong>components</strong> to <strong>channels</strong> and <strong>Attach</strong> and <strong>Detach</strong> allow to create a subscription of a <strong>node</strong> to a <strong>group</strong>.</p>
-<p><strong>Bind</strong>
-Binds the port, or several ports, of a component instance to several channel instances.</p>
+<code>Bind</code> and <code>Unbind</code> commands allow to connect <em>components</em> to <em>channels</em> and <code>Attach</code> and <code>Detach</code> allow to create a subscription of a <em>node</em> to a <em>group</em>.</p>
+<h4 id="bind">Bind</h4>
+<p>Binds the port, or several ports, of a component instance to several channel instances.</p>
 <pre><code>bind node0.base.output chan0
 bind node0.base.input chan0
-</code></pre><p><strong>Unbind</strong>
-Disconnects the port of a component from a channel.</p>
+</code></pre><h4 id="unbind">Unbind</h4>
+<p>Disconnects the port of a component from a channel.</p>
 <pre><code>unbind node0.base.input chan0
-</code></pre><p><strong>Attach</strong>
-The last parameter of this command can be an instance of <code>group</code>or a <code>namespace</code>.
+</code></pre><h4 id="attach">Attach</h4>
+<p>The last parameter of this command can be an instance of <code>group</code>or a <code>namespace</code>.
 If the last parameter is a namespace, the list of parameters can be whatever you want. If the last parameter is a group, the elements should be nodes or namespaces.</p>
 <pre><code>attach node0 sync
 attach node1, node2 sync
 attach * sync
 attach * space42
-</code></pre><p><strong>Detach</strong>
-Disconnects one or several node instances from a synchronization group. The group is always at the last position in the command.</p>
+</code></pre><h4 id="detach">Detach</h4>
+<p>Disconnects one or several node instances from a synchronization group. The group is always at the last position in the command.</p>
 <pre><code>detach node0 sync2
 </code></pre>
                     

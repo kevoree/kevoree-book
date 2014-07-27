@@ -34,7 +34,7 @@
 
 
         
-    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="7.1" data-basepath=".." data-revision="1406471040278">
+    <div class="book" data-github="kevoree/kevoree-tutorials" data-level="7.1" data-basepath=".." data-revision="1406484252703">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -917,16 +917,16 @@
                     
                         <h1 id="available-mappings-to-infrastructures">Available mappings to infrastructures</h1>
 <p>Each Kevoree node types can refine the creation of child nodes. Each of them, offers several virtualization capabilities.</p>
-<p><strong>JavaNode</strong>
-This is the default implementation. Basically it creates a second process for each child node which runs in a separated virtual machine. This light virtualization layer protects for process interaction but offers no protection in term of network or disk.</p>
-<p><strong>LXCNode</strong>
-This Node type creates each child in a Linux container. This offers a light virtualization but isolates network and disk from each machine. This prevents network port collisition and allows to define CPU share time between child nodes.</p>
-<p><strong>DockerIO</strong>
-Similar to LXC node, but using docker project as a backend. It is the default implementation included in Boot2Kevoree</p>
-<p><strong>KVMNode</strong>
-soon...</p>
-<p><strong>EC2Node</strong>
-soon...</p>
+<h4 id="javanode">JavaNode</h4>
+<p>This is the default implementation. Basically it creates a second process for each child node which runs in a separated virtual machine. This light virtualization layer protects for process interaction but offers no protection in term of network or disk.</p>
+<h4 id="lxcnode">LXCNode</h4>
+<p>This Node type creates each child in a Linux container. This offers a light virtualization but isolates network and disk from each machine. This prevents network port collisition and allows to define CPU share time between child nodes.</p>
+<h4 id="dockerio">DockerIO</h4>
+<p>Similar to LXC node, but using docker project as a backend. It is the default implementation included in Boot2Kevoree</p>
+<h4 id="kvmnode">KVMNode</h4>
+<p>soon...</p>
+<h4 id="ec2node">EC2Node</h4>
+<p>soon...</p>
 
                     
                     </section>
