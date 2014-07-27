@@ -1,7 +1,12 @@
 # Developement Environement
 
-This chapter aims at introducing Kevoree various development tools.
-Namely we will introduce here, IDE plugins for IntelliJ and Eclipse to make the link between abstractions and code easier, and also the Web and Java standalone editors
+This chapter introduces the various Kevoree development tools.
+Namely we will introduce here:
+
+- IDE plugins to make the link between abstractions and code easier, for:
+  - IntelliJ
+  - Eclipse
+- Web and Java standalone editors
 
 Chapter summary:
 

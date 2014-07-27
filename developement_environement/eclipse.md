@@ -1,13 +1,11 @@
 # Eclipse
 
-The Kevoree team also provide a plugin for the Eclipse environement hosted at the following address:
-
-> https://github.com/kevoree/kevoree-eclipse-plugin
+The Kevoree also comes with [a plugin for the Eclipse environement](https://github.com/kevoree/kevoree-eclipse-plugin)
 
 Basic useful feature list:
 
- * A project template that automatically activate Kevoree and m2e (maven) nature
- * A Kevoree Nature that automatically activate a specific builder
+ * A project template that automatically activates Kevoree and m2e (maven) nature
+ * A Kevoree Nature that automatically activates a specific builder
  * A set of Kevoree entity templates to quickly create Components, Groups, Channels and KevScripts
  * A KevScript textual editor with completion
  * A Kevscript graphical editor
@@ -17,7 +15,7 @@ Basic useful feature list:
 # Initial requirement
 
 1. You need a Java JDK at least version 6 with a JAVA_HOME env variable
-2. Start from an eclipse with Xtend and maven plugin, you can use this one https://www.eclipse.org/xtend/download.html
+2. Start from an [Eclipse with Xtend and maven plugins](https://www.eclipse.org/xtend/download.html)
 
 # Install the plugin
 

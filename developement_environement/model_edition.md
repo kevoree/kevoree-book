@@ -2,6 +2,7 @@
 
 #### Add TypeDefinition to your model
 To add TypeDefinition to your model you have multiple choices:
+
  - Load/Merge a model from a JSON file or a remote platform
  - Merge some Kevoree Std Libraries
  - Merge libraries from your own repositories
@@ -21,6 +22,7 @@ include mvn:org.kevoree.library.java:org.kevoree.library.java.ws:latest
 
 #### Add instances to your model
 To add instances to your model, you have multiple choices:
+
  - drag'n'drop an item from the TypeDefinition list (left panel) to the model editor canvas (center)
  - add `add` statements to the KevScript editor and run it
 

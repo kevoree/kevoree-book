@@ -10,7 +10,7 @@ According to such definition, a classical process of ***kevs*** usage could be:
 3. Validate the result
 4. Potentially deploy the new model to really adapt the system according to modification asked in the script.
 
-Concretely, in Kevoree man can use this approach for several purpose. Namely you can execute KevScript in
+Concretely, in Kevoree one can use this approach for several purpose. Namely you can execute KevScript in
 
 **1. Standalone Editor**
 
