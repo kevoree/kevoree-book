@@ -17,7 +17,8 @@ In the rest of this chapter we will detail how to split an implentation of the K
 TODO : Drawing a schema of dependencies between components
 
 ## Components
- * [Remote code loader](remote_code_loader.md) (How to load remote code in your runtime),
+ * [Remote code loader](remote_code_loader.md) (How to load remote code in your runtime).
+ * [Test link](remote_code_loader.md) aaa
  * **Kevoree Model generation :** : Advices on how to quickly obtain a kevoree model code base
  * **Core :** TODO.
  * **Bootstrap :** TODO.
