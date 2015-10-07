@@ -4,8 +4,18 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-gitbook');
     grunt.loadNpmTasks('grunt-gh-pages');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.initConfig({
+        'watch': {
+             scripts: {
+                 files: ['**/*.md'],
+                 tasks: ['gitbook'],
+                 options: {
+                     spawn: false,
+                 },
+            },
+        },
         'gitbook': {
             development: {
                 input: "./",
