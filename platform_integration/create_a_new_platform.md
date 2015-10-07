@@ -18,7 +18,6 @@ TODO : Drawing a schema of dependencies between components
 
 ## Components
  * [Remote code loader](remote_code_loader.md) (How to load remote code in your runtime).
- * [Test link](remote_code_loader.md) aaa
  * **Kevoree Model generation :** : Advices on how to quickly obtain a kevoree model code base
  * **Core :** TODO.
  * **Bootstrap :** TODO.
@@ -26,3 +25,8 @@ TODO : Drawing a schema of dependencies between components
  * **Logger** : TODO - Define a few specifications.
  * **Model generator :** : TODO (model generation + registry publication ? // should be based on language's platform automation and industrialisation tools).
  * **Code generator :** TODO -> tool which takes a Type Definition and generate a project's base compatible with the definition.
+ * **Kevoree's components :**
+  * Component : TODO
+  * Node : TODO
+  * Group : TODO
+  * Channel : TODO
