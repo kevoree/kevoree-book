@@ -38,4 +38,4 @@
 * [Kevoree Cloud](cloud_management_with_kevoree/README.md)
    * [Available mappings](cloud_management_with_kevoree/available_mappings_to_infrastructure.md)
    * [Boot2Kevoree](cloud_management_with_kevoree/boot2kevoree.md)
-
+* [Platform Integration](platform_integration/create_a_new_platform.md)
