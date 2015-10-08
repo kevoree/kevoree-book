@@ -17,16 +17,18 @@ In the rest of this chapter we will detail how to split an implentation of the K
 TODO : Drawing a schema of dependencies between components
 
 ## Components
- * [Remote code loader](remote_code_loader.md) : (How to load remote code in your runtime).
- * [Kevoree Model](model.md) : How to port Kevoree's data model to your platform ?
- * [Kevoree Model generation](model_generator.md) : Advices on how to quickly obtain a kevoree model code base
+ * [Generalities](generalities.md) A few cross platform advices.
+ * [Kevoree Model](model.md) How to port Kevoree's data model to your platform.
+ * [Remote code loader](remote_code_loader.md) : How to load remote code in your runtime.
+ * [Kevoree Model generation](model_generator.md) : How to quickly obtain a kevoree model code base
  * **Core :** TODO.
  * [Registry client](registry_client.md) A simple client for the registry.
- * **Logger** : TODO - Define a few specifications.
- * **Code generator :** TODO -> tool which takes a Type Definition and generate a project's base compatible with the definition.
- * **KevScript tool** : reading kevscript, generating valid kevscript...
+ * **Logger** : TODO - Define a few specifications (might be moved in the generalities part ?).
+ * **Code generator :** TODO -> tool which takes a Type Definition and generate a project's base compatible with the definition. Should we speak of this now, since it is only implemented in javascript ?
+ * [KevScript tool](kevscript.md) reading kevscript, generating valid kevscript...
  * [Bootstrap](bootstrap.md) A Bootstrap is a runtime tool dedicated to the startup of a node instance.
  * **Kevoree's components :**
+ Should we define a strict way to implement this (using annotation...) or just explaining that it is necessary to implement and document something powerful enought to express everything allowed by the model ?
   * Component : TODO
   * Node : TODO
   * Group : TODO
