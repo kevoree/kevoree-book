@@ -4,7 +4,11 @@ behave, their is still a course of action to follow in order to keep a sens of c
 
 
 ## Naming rules
-TODO
+ - todo
+ - todo
+ - todo
 
 ## Behavioural rules
-TODO
+ - todo
+ - todo
+ - todo

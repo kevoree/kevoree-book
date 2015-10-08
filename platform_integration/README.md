@@ -11,7 +11,7 @@ One is currently in development :
 
 Each of those platforms are based on the same concepts and are split in the same way.
 
-In the rest of this chapter we will detail how to split an implentation of the Kevoree runtime. It aim to be usefull if you want to write kevoree in another language (python, haskell, ruby, erlang, you name it) but will be based on our experience with Java, Javascript and C#.
+In the rest of this chapter we will detail how to split an implentation of the Kevoree runtime. It aims to be useful if you want to write Kevoree in another language (python, haskell, ruby, erlang, you name it) but will be based on our experience with Java, JavaScript and C#.
 
 ## Global architecture dependencies
 TODO : Drawing a schema of dependencies between components
