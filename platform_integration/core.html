@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
-        <title>Model Edition | The Kevoree Book</title>
+        <title>Core | The Kevoree Book</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.5.0">
@@ -19,10 +19,8 @@
         
     
     
-    <link rel="next" href="../developement_environement/known_protocols.html" />
+    <link rel="next" href="../platform_integration/registry_client.html" />
     
-    
-    <link rel="prev" href="../developement_environement/kwe_popups.html" />
     
 
         
@@ -34,7 +32,7 @@
 
 
         
-    <div class="book" data-level="5.4.3" data-basepath=".." data-revision="1444319843044">
+    <div class="book" data-level="8.5" data-basepath=".." data-revision="1444319843044">
     
 
 <div class="book-summary">
@@ -530,7 +528,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="5.4.3" data-path="developement_environement/model_edition.html">
+        <li class="chapter " data-level="5.4.3" data-path="developement_environement/model_edition.html">
             
                 
                     <a href="../developement_environement/model_edition.html">
@@ -807,7 +805,7 @@
         </li>
     
         
-        <li class="chapter " data-level="8.5" data-path="platform_integration/core.html">
+        <li class="chapter active" data-level="8.5" data-path="platform_integration/core.html">
             
                 
                     <a href="../platform_integration/core.html">
@@ -1004,43 +1002,43 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_10">
+                    <section class="normal" id="section-gitbook_55">
                     
-                        <h1 id="model-edition">Model Edition</h1>
-<h4 id="add-typedefinition-to-your-model">Add TypeDefinition to your model</h4>
-<p>To add TypeDefinition to your model you have multiple choices:</p>
+                        <h1 id="core">Core</h1>
+<h2 id="what-is-it">What is it?</h2>
+<p>The <strong>Core</strong> is the <em>director</em> of a Kevoree runtime:</p>
 <ul>
-<li>Load/Merge a model from a JSON file or a remote platform</li>
-<li>Merge some Kevoree Std Libraries</li>
-<li>Merge libraries from your own repositories</li>
-<li>Add <code>include</code> statements to the KevScript editor and run it</li>
+<li><strong>it is in charge of a node</strong> (Kevoree NodeType)</li>
+<li><strong>it has to execute adaptations on deployments</strong> (model@runtime)</li>
+<li><strong>keeps track of model changes</strong></li>
 </ul>
-<p>Upon TypeDefinition addition, you will see the left panel being populated with items:</p>
-<p><img src="http://hosta.braindead.fr/raw/5399967d1a9879c239a1a224" alt="KWE Tdefs list"></p>
-<p>This list has been created using the KevScript method with the following script:</p>
-<pre><code class="lang-kevs">include npm:kevoree-node-javascript:latest
-include npm:kevoree-group-websocket:latest
-include mvn:org.kevoree.library.java:org.kevoree.library.java.javaNode:latest
-include mvn:org.kevoree.library.java:org.kevoree.library.java.ws:latest
+<p>Using pseudo-code, the core algorithm looks like this:</p>
+<pre><code class="lang-go">fun deployNewModel(newModel: KevModel) {
+    <span class="hljs-comment">// check the validity of the new model</span>
+    <span class="hljs-keyword">if</span> (isValid(newModel)) {
+        <span class="hljs-comment">// compare new model with current model</span>
+        val compareResult: AdaptationModel = node.compare(currentModel, newModel);
+        <span class="hljs-comment">// execute a list of command to adapt the current system</span>
+        <span class="hljs-comment">// according to the new model</span>
+        <span class="hljs-keyword">if</span> (compareResult.execute()) {
+            <span class="hljs-comment">// keep track of current model (history)</span>
+            saveModel(currentModel);
+            <span class="hljs-comment">// use new model as current model</span>
+            setCurrentModel(newModel);
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-comment">// if an adaptation fails, rollback to previous state</span>
+            <span class="hljs-comment">// which means, execute the successfully applied command</span>
+            <span class="hljs-comment">// backwards to go back to the previous state</span>
+            compareResult.rollback();
+            <span class="hljs-comment">// notify error</span>
+            throw error;
+        }
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-comment">// if the new model is not a valid model, discard it and notify</span>
+        throw error;
+    }
+}
 </code></pre>
-<h4 id="add-instances-to-your-model">Add instances to your model</h4>
-<p>To add instances to your model, you have multiple choices:</p>
-<ul>
-<li>drag&#39;n&#39;drop an item from the TypeDefinition list (left panel) to the model editor canvas (center)</li>
-<li>add <code>add</code> statements to the KevScript editor and run it</li>
-</ul>
-<p>By doing so, KWE will create an instance of the selected TypeDefinition (graphical method: using its latest available version, kevscript method: using the version you have specified).</p>
-<p>Using the previous KevScript example (for TypeDefinition), we could do:</p>
-<pre><code class="lang-kevs">include npm:kevoree-node-javascript:latest
-include npm:kevoree-group-websocket:latest
-include mvn:org.kevoree.library.java:org.kevoree.library.java.javaNode:latest
-include mvn:org.kevoree.library.java:org.kevoree.library.java.ws:latest
-
-add node0 : JavascriptNode
-add node1 : JavaNode
-</code></pre>
-<p>We have added two <code>add</code> statements, one for <code>node0 : Javascript</code> and one for <code>node1 : JavaNode</code>. This will result in the addition of two nodes in the model editor canvas:</p>
-<p><img src="http://hosta.braindead.fr/raw/539998931a9879c239a1a225" alt="KWE add instances"></p>
 
                     
                     </section>
@@ -1051,10 +1049,8 @@ add node1 : JavaNode
         </div>
 
         
-        <a href="../developement_environement/kwe_popups.html" class="navigation navigation-prev " aria-label="Previous page: KWE popups"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="../developement_environement/known_protocols.html" class="navigation navigation-next " aria-label="Next page: Known protocols"><i class="fa fa-angle-right"></i></a>
+        <a href="../platform_integration/registry_client.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Registry Client"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
