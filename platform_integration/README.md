@@ -17,16 +17,24 @@ In the rest of this chapter we will detail how to split an implentation of the K
 TODO : Drawing a schema of dependencies between components
 
 ## Components
- * [Remote code loader](remote_code_loader.md) (How to load remote code in your runtime).
- * **Kevoree Model generation :** : Advices on how to quickly obtain a kevoree model code base
+ * [Remote code loader](remote_code_loader.md) : (How to load remote code in your runtime).
+ * [Kevoree Model](model.md) : How to port Kevoree's data model to your platform ?
+ * [Kevoree Model generation](model_generator.md) : Advices on how to quickly obtain a kevoree model code base
  * **Core :** TODO.
- * **Bootstrap :** TODO.
- * **Registry client :** TODO.
+ * [Registry client](registry_client.md) A simple client for the registry.
  * **Logger** : TODO - Define a few specifications.
- * **Model generator :** : TODO (model generation + registry publication ? // should be based on language's platform automation and industrialisation tools).
  * **Code generator :** TODO -> tool which takes a Type Definition and generate a project's base compatible with the definition.
+ * **KevScript tool** : reading kevscript, generating valid kevscript...
+ * [Bootstrap](bootstrap.md) A Bootstrap is a runtime tool dedicated to the startup of a node instance.
  * **Kevoree's components :**
   * Component : TODO
   * Node : TODO
   * Group : TODO
   * Channel : TODO
+ * **Usefull development tools :**
+  * **Local kevoree registry :**
+    * Java project : https://github.com/kevoree/kevoree-registry
+    * Docker container : https://github.com/kevoree/docker-image-registry-replica (clone the [official registry](http://registry.kevoree.org) by default)
+  * **Local kevoree editor :**
+    * Node project : https://github.com/kevoree/kevoree-web-editor
+    * Docker container : https://github.com/kevoree/docker-image-editor
