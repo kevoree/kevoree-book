@@ -2,19 +2,19 @@
 ## Introduction
 As you know Kevoree is a multiplatform distributed model tool.
 
-Two platforms a currently maintained :
+Two platforms a currently maintained:
  * [Java](https://github.com/dukeboard/kevoree)
  * [Javascript](https://github.com/kevoree/kevoree-js)
 
-One is currently in development :
+One is currently in development:
  * [C#](https://github.com/kevoree/kevoree-dotnet)
 
 Each of those platforms are based on the same concepts and are split in the same way.
 
-In the rest of this chapter we will detail how to split an implentation of the Kevoree runtime. It aim to be usefull if you want to write kevoree in another language (python, haskell, ruby, erlang, you name it) but will be based on our experience with Java, Javascript and C#.
+In the rest of this chapter we will detail how to split an implentation of the Kevoree runtime. It aims to be useful if you want to implement Kevoree in another language (python, haskell, ruby, erlang, you name it) but will be based on our experience with Java, JavaScript and C#.
 
 ## Global architecture dependencies
-TODO : Drawing a schema of dependencies between components
+TODO : Schema of dependencies between components
 
 ## Components
  * [Remote code loader](remote_code_loader.md) (How to load remote code in your runtime).
