@@ -42,11 +42,10 @@
    * [Generalities](platform_integration/generalities.md)
    * [Kevoree Model](platform_integration/model.md)
    * [Remote Code Loader](platform_integration/remote_code_loader.md)
-   * Kevoree Model generation
    * [Core](platform_integration/core.md)
    * [Registry Client](platform_integration/registry_client.md)
    * Logger (TODO)
-   * [Model Generator](platform_integration/model_generator.md)
+   * [Kevoree Model generation](platform_integration/model_generator.md)
    * [Registry Client](platform_integration/registry_client.md)
    * [Kevscript Tools](platform_integration/kevscript.md)
    * [Bootstrap](platform_integration/bootstrap.md)
