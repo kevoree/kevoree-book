@@ -1,6 +1,6 @@
 # Kevoree model
 ## Introduction
-The metal model of kevoree is defined at https://github.com/dukeboard/kevoree/blob/master/kevoree-core/org.kevoree.model/metamodel/org.kevoree.mm
+The meta model of kevoree is defined at https://github.com/dukeboard/kevoree/blob/master/kevoree-core/org.kevoree.model/metamodel/org.kevoree.mm
 using [KMF](http://kevoree.org/kmf/) we are able to generate the corresponding model in Java and Javascript.
 
 ## Strategies
