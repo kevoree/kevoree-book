@@ -23,6 +23,7 @@ TODO : Drawing a schema of dependencies between components
  * **[Kevoree Model generation](model_generator.md)**: How to quickly obtain a kevoree model code base
  * **[Logger](logger.md)**: Specifications of the logging system.
  * **[Core](core.md)**: The Model@Runtime conductor
+ * **[Generate instances of the Kevoree Metamodel](model_generator.md)**: How to quickly obtain a kevoree model code base
  * **[Registry client](registry_client.md)**: A simple REST client for the registry
  * **[Code generator](code_generator.md)**: How to generate a Component project from a Type Definition.
  * **[KevScript tool](kevscript.md)**: Reading kevscript, generating valid kevscript...
