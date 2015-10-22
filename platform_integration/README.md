@@ -18,10 +18,10 @@ TODO : Drawing a schema of dependencies between components
 
 ## Components
  * **[Generalities](generalities.md)**: A few cross platform advices
- * **[Kevoree Model](model.md)**: How to port Kevoree's data model to your platform
- * **[Remote code loader](remote_code_loader.md)**: How to load remote code in your runtime
- * **[Kevoree Model generation](model_generator.md)**: How to quickly obtain a kevoree model code base
+ * **[Kevoree Model](model.md)**: How to port Kevoree's meta-model to your platform
  * **[Core](core.md)**: The Model@Runtime conductor
+ * **[Remote code loader](remote_code_loader.md)**: How to load remote code in your runtime
+ * **[Generate instances of the Kevoree Metamodel](model_generator.md)**: How to quickly obtain a kevoree model code base
  * **[Registry client](registry_client.md)**: A simple REST client for the registry
  * **[Logger]()**: TODO - Define a few specifications (might be moved in the generalities part ?)
  * **[Code generator]()**: TODO -> tool which takes a Type Definition and generate a project's base compatible with the definition. Should we speak of this now, since it is only implemented in javascript ?

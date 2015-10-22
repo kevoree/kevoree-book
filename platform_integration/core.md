@@ -34,3 +34,8 @@ fun deployNewModel(newModel: KevModel) {
     }
 }
 ```
+
+### Bootstrap
+### Error handling
+### Rollback
+### DI
