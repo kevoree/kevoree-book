@@ -41,6 +41,7 @@
 * [Platform Integration](platform_integration/README.md)
    * [Generalities](platform_integration/generalities.md)
    * [Kevoree Model](platform_integration/model.md)
+       * [Kevoree MM V5 JsonSchema](platform_integration/kevoree-schema.md)
    * [Core](platform_integration/core.md)
    * [Remote Code Loader](platform_integration/remote_code_loader.md)
    * [Registry Client](platform_integration/registry_client.md)

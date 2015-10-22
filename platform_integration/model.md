@@ -16,7 +16,7 @@ You have two choices here:
 
 ### Kevoree Model's JSON Schema
 What matters in the end is that the target platform is able to (de)serialize Kevoree models from (and to) JSON strings.  
-The JSON format must comply with [this JSON Schema]().
+The JSON format must comply with [this JSON Schema](/kevoree-schema.html).
 
 ### Transpiling from an existing model
 A real life scenario is the development of the C# platform.
