@@ -16,7 +16,8 @@ And looks like this in the editor :
 ![Bootstrap model](bootstrap_editor_snap.png)
 
 ## Dependencies
-A bootstrap depend of the following kevoree components :
+A bootstrap depends of the following kevoree components :
  * The [model](model.md)
  * The [kevscript interpreter](kevscript.md) (which transform a kevscript to a model in your platform).
  * The [remote code loader](remote_code_loader.md)
+ * The [Logger](logger.md)

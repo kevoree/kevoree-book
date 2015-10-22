@@ -33,6 +33,6 @@ The [Kevoree Dotnet Nuget Loader](https://github.com/kevoree/kevoree-dotnet-nuge
 This component can be pretty tricky to implement according to the default features of the targeted language.
 
 You should implement it as soon as possible because it will impact the following code parts :
- * Bootstrap
+ * [Bootstrap](bootstrap.md)
  * Node
- * Model generator
+ * [Model generator](model_generator.md)
