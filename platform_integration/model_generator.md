@@ -2,10 +2,10 @@
 ## Introduction
 
 In order to declare publicly a components you have to publish its Type Definition and
-its DeployUnit to a registry, to do so you have to generator a model from your component.
+its DeployUnit to a registry, to do so you have to generate a model from your component.
 
- * Explaining that the model should have a json serializer
  * Publication is done by calling a POST method, documented here : https://github.com/kevoree/kevoree-registry#push-model (using the [registry client](registry_client.md))
+ * The registry's REST API expects to receive the published model formated in json. This is usually done by build fist a object structure using the [model](model.md) and then marshalling it in json.
  * Implementing a code generator can be done by static code analysis or reflection.
 
 
