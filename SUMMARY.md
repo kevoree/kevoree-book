@@ -49,7 +49,7 @@
    * [Kevoree Model generation](platform_integration/model_generator.md)
    * [Registry Client](platform_integration/registry_client.md)
    * [Code generator](platform_integration/code_generator.md)
-   * [Bootstrap](platform_integration/bootstrap.md)
+   * [Runtime](platform_integration/runtime.md)
    * [Kevscript Tools](platform_integration/kevscript.md)
    * [Components](platform_integration/components/README.md)
      * [Component](platform_integration/components/component.md)

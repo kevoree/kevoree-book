@@ -1,16 +1,11 @@
-# KevScript tool
+# KevScript Tools
 ## Description
 
-The kevscript tool is a library which takes a kevscript in input and gives kevoree model in return.
+In order to manipulate models, we have created a scripting language that is called **KevScript**.  
+*This language is not a [general purpose language](https://en.wikipedia.org/wiki/General-purpose_programming_language)*  
 
-It can be see as the combination of 2 components :
-  * A transformer from KevScript to a json modelisation of the model.
-  * A transformer from a json modelisation of the model to a datatructure in your platform.
-
-By composition of those to components you get a kevscript to kevoree model transformer for your platform.
+A KevScript engine will take a script and a model as inputs, and return a new model modified according to the script.
+*In other word, KevScript is only a Kevoree-specific transformation language.*
 
 ## Implementations
-Following the example of the [model](model.md), you can write the tool for your platform or
-transpiling it from another existing implentation.
-
-We did the later for our C# implementation.
+The KevScript grammar is written using the **waxeye** grammar.

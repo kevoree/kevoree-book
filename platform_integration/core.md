@@ -8,7 +8,7 @@ The **Core** is the *director* of a Kevoree runtime:
 ### Bootstrap
 The first step of the core is to **bootstrap** the runtime. To do so, the core is in charge
 of creating the node instance defined with a **unique** name at the start of the Core.  
-In order to know which NodeType to instantiate and with what properties, the core has to be given a model containing those data.  
+In order to know which NodeType to instantiate and with what properties, the core must have a model containing those data.  
 This model is known as the **bootstrap model**. Using this model the core will be able to
 create a new ContainerNode instance and keep a reference to it in order to ask that particular node *how* to do runtime adaptations on deployment phases.
 
@@ -45,7 +45,7 @@ fun deployNewModel(newModel: KevModel) {
 
 ### Error handling
 If an error occurs while processing the adaptations the Core is in charge of putting the runtime state back to the previous one. This is known as the **rollback** phase.  
-A rollback is an execution of all the already processed adaptation but backward (cf. **Deployment phase** algorithm)
+A rollback is an execution of all the already processed adaptations but backwards (cf. **Deployment phase** algorithm)
 
 ### Using the Core within the running components and fragments
 From a component or fragment perspective, one might want to apply reconfigurations on the running system on its own. To do so, each **Component**, **Channel**, **Group** and **Node** must be able to get a reference to the runtime **core**.  
@@ -63,7 +63,7 @@ public class MyComponent {
             @Override
             public void run(Boolean success) {
                 if (success) {
-                    // adaptation made
+                    // adaptations made
                 } else {
                     // problem with adaptation: not done
                 }
@@ -71,4 +71,23 @@ public class MyComponent {
         });
     }
 }
+```
+
+In **JavaScript**, each instance can access the core locally:
+```js
+var AbstractComponent = require('kevoree-entities').AbstractComponent;
+
+module.export = AbstractComponent.extend({
+    toString: 'MyComponent',
+
+    doSomethingWithCore: function () {
+        this.core.deploy(aModel, function (err) {
+            if (err) {
+                // problem with adaptation: not done
+            } else {
+                // adaptations made
+            }
+        });
+    }
+});
 ```
