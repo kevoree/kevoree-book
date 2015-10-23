@@ -23,7 +23,7 @@ The format of a log trace is *hh:mm:ss.fff log_level emiter message* where :
 
 ## Architecture
 
-![](logger_graph.png)
+![](img/logger_graph.png)
 
 The logging system is defined around a chain of filtering.
 A component which want to send a message will actually forward it his parent in the chain which will have responsibility to determine if it will forward it through. A message is logged only if it reach the core which is the only one allowed to print a log message.
