@@ -27,7 +27,7 @@ TODO : Drawing a schema of dependencies between components
  * **[Registry client](registry_client.md)**: A simple REST client for the registry
  * **[Code generator](code_generator.md)**: How to generate a Component project from a Type Definition.
  * **[KevScript tool](kevscript.md)**: Reading kevscript, generating valid kevscript...
- * **[Bootstrap](bootstrap.md)**: A Bootstrap is a runtime tool dedicated to the startup of a node instance
+ * **[Runtime](runtime.md)**: A Bootstrap is a runtime tool dedicated to the startup of a node instance
  * **Kevoree's components**:
  <!---
 Should we define a strict way to implement this (using annotation...) or just explaining that it is necessary to implement and document something powerful enought to express everything allowed by the model ?
