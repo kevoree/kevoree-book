@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>CRUD Commands | The Kevoree Book</title>
+        <title>Distributed Models@Run.time | The Kevoree Book</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.4.3">
@@ -29,10 +29,10 @@
         
     
     
-    <link rel="next" href="../kevoree_script_aka_kevscript/bindingsync_commands.html" />
+    <link rel="next" href="../getting_started/index.html" />
     
     
-    <link rel="prev" href="../kevoree_script_aka_kevscript/management_commands.html" />
+    <link rel="prev" href="../index.html" />
     
 
         
@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="6.2.2" data-basepath=".." data-revision="Fri Oct 23 2015 10:15:31 GMT+0200 (CEST)">
+    <div class="book" data-level="1" data-basepath=".." data-revision="Fri Oct 23 2015 10:15:31 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -71,7 +71,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1" data-path="modelsruntime/index.html">
+        <li class="chapter active" data-level="1" data-path="modelsruntime/index.html">
             
                 
                     <a href="../modelsruntime/index.html">
@@ -610,7 +610,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="6.2.2" data-path="kevoree_script_aka_kevscript/crud_commands.html">
+        <li class="chapter " data-level="6.2.2" data-path="kevoree_script_aka_kevscript/crud_commands.html">
             
                 
                     <a href="../kevoree_script_aka_kevscript/crud_commands.html">
@@ -1080,39 +1080,40 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="crud-commands">CRUD Commands</h1>
-<p>CRUD (Create, Remove, Update, Delete) operations are basic statements in KevScript.
-Namely they allow to create and move components,channels, groups and childs nodes instances.</p>
-<p><strong>Add</strong>
-Adds a new instance of <code>Component</code>, <code>Node</code>, <code>Channel</code> or <code>Group</code>.
-You can add several elements of the same type, at the same time, by separating the instances&apos; names with a <code>,</code>.
-When the element you add is a component instance, you <code>MUST</code> specify the node that will host this instance, using a dotted notation (i.e.: node0.instance0 : MyComponentType).</p>
-<pre><code class="lang-kevs">add node0, node1 : JavaNode
-add sync : WebSocketGroup/0.0.2-SNAPSHOT
-add node0.comp0 : ToyConsole
-add node0.comp1, node0.comp2 : ToyDisplay
-add chan0 : DelayBufferedChannel
-</code></pre>
-<p><strong>Remove</strong>
-Removes elements from the model.</p>
-<pre><code class="lang-kevs">remove node0
-remove sync
-remove chan0
-</code></pre>
-<p><strong>Move</strong>
-Moves one or several instances to another node. Instances can be of type <code>NodeType</code> or <code>ComponentType</code>. The last parameter of the command is always the destination node.</p>
-<pre><code class="lang-kevs">move node0.comp0 node1
-move *.* node0 //moves all components of all nodes, to node0
-move node0.comp0, node0.comp1 node1
-</code></pre>
-<p><strong>Set</strong>
-Used to set parameters of instances.
-Some parameters are <code>fragment dependent</code>. In this case, a property can have a different value on each node howting a fragment (it can be the case for Groups and Channels). In this case, the property is set using a <code>&lt;element&gt;.&lt;property&gt;/&lt;node&gt; = &quot;&lt;value&gt;&quot;</code> notation.</p>
-<pre><code class="lang-kevs">set node0.comp0.foo = &quot;bar&quot;
-set node0.*.baz = &apos;potato&apos; //sets the property baz of all components on node0
-set sync.forcePush = &quot;false&quot;
-set sync.port/node0 = &apos;8000&apos;
-</code></pre>
+                        <h1 id="distributed-models-run-time">Distributed Models@Run.time</h1>
+<p>The Kevoree project is build around the concept of Distributed Models@Run.time.
+This approach aims at taming the complexity of distributed adapted systems (DDAS).</p>
+<p><strong>What is complex ?</strong></p>
+<p><strong><strong>#Reason 1</strong></strong> To perform an adaptation, a system has to know technical details about deployed elements in order to do the provisionning.</p>
+<blockquote>
+<p>In Kevoree we propose to interact through an abstraction layer (model) which contains only simple primitive, thus, CRUD operations on elements. As result, adaptations are simpler and the complexity is delegate to the execution place (node) which as to know technical details to be able to perform them.</p>
+</blockquote>
+<p><strong><strong> Reason 2</strong></strong> System adaptations can be complex to plannify and introspection are complex.</p>
+<blockquote>
+<p>In Kevoree we propose to interact asynchronously with a local model layer in order to express forseen modification. These modification are then send to a node which plan them and execute.</p>
+</blockquote>
+<p>The principe of Models@Run.time can be explain in 4 step as depitect in the following figure:</p>
+<ol>
+<li>A system keep an update abstract of its state (for instance reflecting that currently he host 2 component)</li>
+<li>To perform an adaptation we interact asynchrously (only by modifying the abstraction)</li>
+<li>We send the model to a runtime, wich will apply the modification (using a diff) on the system</li>
+<li>The system now reflect the asked abstract, and next adaptation can be asked.</li>
+</ol>
+<p><img src="modelATruntime2.png" alt="modelATruntime"></p>
+<p><strong><strong> Reason 3</strong></strong> Distributed systems are often unsynchronized due to connection failed.</p>
+<blockquote>
+<p>In Kevoree, we propose to interact through an asynchronous model. Thus the system will take care using different strategy to send the model to other platform asynchrously as well. As depicted in the following figure using such strategy, to adapt a cluster we just have to broadcast a model (an image of them).</p>
+</blockquote>
+<p><img src="distModelAtRuntime.png" alt="modelATruntime"></p>
+<h3 id="the-big-picture-kevoree-in-one-image-ouch">The big picture ! Kevoree in one image, ouch...</h3>
+<p>This last figure describe a distributed Kevoree architecture. Every node are executing some components (in orange) has a Models@Run.time layer, in other words, a local copy of their view of the world (in gray) containing their state and other nodes expecting states. To solve DDAS issues we thus just have to ensure that this vision is synchronized between all nodes, resulting in a global synchronization of the cluster components.</p>
+<p><img src="dmar2.png" alt="modelATruntime"></p>
+<h3 id="ok-then">Ok then</h3>
+<p>As a result in Kevoree if you want to deploy a web server on your neighbour phone, you just to</p>
+<blockquote>
+<p>getLocalModel.getNode(&quot;neighbour&quot;).add(&quot;WebServer&quot;).sync();</p>
+</blockquote>
+<p>Now you get it, Kevoree project is himself build to build complex adaptive system, by allowing to express simply complex distributed adaptations. As result we can build clever self-healing cluster of cloud servers, ubiquitous phones cohalition, ...</p>
 
                     
                     </section>
@@ -1123,10 +1124,10 @@ set sync.port/node0 = &apos;8000&apos;
         </div>
 
         
-        <a href="../kevoree_script_aka_kevscript/management_commands.html" class="navigation navigation-prev " aria-label="Previous page: Management Commands"><i class="fa fa-angle-left"></i></a>
+        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../kevoree_script_aka_kevscript/bindingsync_commands.html" class="navigation navigation-next " aria-label="Next page: Binding/Sync Commands"><i class="fa fa-angle-right"></i></a>
+        <a href="../getting_started/index.html" class="navigation navigation-next " aria-label="Next page: Getting started"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

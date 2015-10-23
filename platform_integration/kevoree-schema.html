@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>CRUD Commands | The Kevoree Book</title>
+        <title>Kevoree MM V5 JsonSchema | The Kevoree Book</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.4.3">
@@ -29,10 +29,10 @@
         
     
     
-    <link rel="next" href="../kevoree_script_aka_kevscript/bindingsync_commands.html" />
+    <link rel="next" href="../platform_integration/core.html" />
     
     
-    <link rel="prev" href="../kevoree_script_aka_kevscript/management_commands.html" />
+    <link rel="prev" href="../platform_integration/model.html" />
     
 
         
@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="6.2.2" data-basepath=".." data-revision="Fri Oct 23 2015 10:15:31 GMT+0200 (CEST)">
+    <div class="book" data-level="8.2.1" data-basepath=".." data-revision="Fri Oct 23 2015 10:15:31 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -610,7 +610,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="6.2.2" data-path="kevoree_script_aka_kevscript/crud_commands.html">
+        <li class="chapter " data-level="6.2.2" data-path="kevoree_script_aka_kevscript/crud_commands.html">
             
                 
                     <a href="../kevoree_script_aka_kevscript/crud_commands.html">
@@ -748,7 +748,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="8.2.1" data-path="platform_integration/kevoree-schema.html">
+        <li class="chapter active" data-level="8.2.1" data-path="platform_integration/kevoree-schema.html">
             
                 
                     <a href="../platform_integration/kevoree-schema.html">
@@ -1080,38 +1080,297 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="crud-commands">CRUD Commands</h1>
-<p>CRUD (Create, Remove, Update, Delete) operations are basic statements in KevScript.
-Namely they allow to create and move components,channels, groups and childs nodes instances.</p>
-<p><strong>Add</strong>
-Adds a new instance of <code>Component</code>, <code>Node</code>, <code>Channel</code> or <code>Group</code>.
-You can add several elements of the same type, at the same time, by separating the instances&apos; names with a <code>,</code>.
-When the element you add is a component instance, you <code>MUST</code> specify the node that will host this instance, using a dotted notation (i.e.: node0.instance0 : MyComponentType).</p>
-<pre><code class="lang-kevs">add node0, node1 : JavaNode
-add sync : WebSocketGroup/0.0.2-SNAPSHOT
-add node0.comp0 : ToyConsole
-add node0.comp1, node0.comp2 : ToyDisplay
-add chan0 : DelayBufferedChannel
-</code></pre>
-<p><strong>Remove</strong>
-Removes elements from the model.</p>
-<pre><code class="lang-kevs">remove node0
-remove sync
-remove chan0
-</code></pre>
-<p><strong>Move</strong>
-Moves one or several instances to another node. Instances can be of type <code>NodeType</code> or <code>ComponentType</code>. The last parameter of the command is always the destination node.</p>
-<pre><code class="lang-kevs">move node0.comp0 node1
-move *.* node0 //moves all components of all nodes, to node0
-move node0.comp0, node0.comp1 node1
-</code></pre>
-<p><strong>Set</strong>
-Used to set parameters of instances.
-Some parameters are <code>fragment dependent</code>. In this case, a property can have a different value on each node howting a fragment (it can be the case for Groups and Channels). In this case, the property is set using a <code>&lt;element&gt;.&lt;property&gt;/&lt;node&gt; = &quot;&lt;value&gt;&quot;</code> notation.</p>
-<pre><code class="lang-kevs">set node0.comp0.foo = &quot;bar&quot;
-set node0.*.baz = &apos;potato&apos; //sets the property baz of all components on node0
-set sync.forcePush = &quot;false&quot;
-set sync.port/node0 = &apos;8000&apos;
+                        <h3 id="kevoree-meta-model-v5-jsonschema">Kevoree Meta-model V5 JsonSchema</h3>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;$schema&quot;</span>: <span class="hljs-string">&quot;http://json-schema.org/draft-04/schema#&quot;</span>,
+    <span class="hljs-string">&quot;additionalProperties&quot;</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+    <span class="hljs-string">&quot;definitions&quot;</span>: {
+        <span class="hljs-string">&quot;Group&quot;</span>: {
+            <span class="hljs-string">&quot;additionalProperties&quot;</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+            <span class="hljs-string">&quot;properties&quot;</span>: {
+                <span class="hljs-string">&quot;metaData&quot;</span>: {
+                    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+                    <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;Value&quot;</span>}
+                },
+                <span class="hljs-string">&quot;dictionary&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;Dictionary&quot;</span>},
+                <span class="hljs-string">&quot;typeDefinition&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;TypeDefinition&quot;</span>},
+                <span class="hljs-string">&quot;name&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>},
+                <span class="hljs-string">&quot;fragmentDictionary&quot;</span>: {
+                    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+                    <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;FragmentDictionary&quot;</span>}
+                },
+                <span class="hljs-string">&quot;started&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>},
+                <span class="hljs-string">&quot;subNodes&quot;</span>: {
+                    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+                    <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;ContainerNode&quot;</span>}
+                }
+            },
+            <span class="hljs-string">&quot;required&quot;</span>: [<span class="hljs-string">&quot;started&quot;</span>]
+        },
+        <span class="hljs-string">&quot;Dictionary&quot;</span>: {
+            <span class="hljs-string">&quot;additionalProperties&quot;</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>
+        },
+        <span class="hljs-string">&quot;FragmentDictionary&quot;</span>: {
+            <span class="hljs-string">&quot;additionalProperties&quot;</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+            <span class="hljs-string">&quot;properties&quot;</span>: {<span class="hljs-string">&quot;name&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>}}
+        },
+        <span class="hljs-string">&quot;NetworkInfo&quot;</span>: {
+            <span class="hljs-string">&quot;additionalProperties&quot;</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+            <span class="hljs-string">&quot;properties&quot;</span>: {
+                <span class="hljs-string">&quot;values&quot;</span>: {
+                    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+                    <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;Value&quot;</span>}
+                },
+                <span class="hljs-string">&quot;name&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>}
+            }
+        },
+        <span class="hljs-string">&quot;Channel&quot;</span>: {
+            <span class="hljs-string">&quot;additionalProperties&quot;</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+            <span class="hljs-string">&quot;properties&quot;</span>: {
+                <span class="hljs-string">&quot;metaData&quot;</span>: {
+                    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+                    <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;Value&quot;</span>}
+                },
+                <span class="hljs-string">&quot;dictionary&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;Dictionary&quot;</span>},
+                <span class="hljs-string">&quot;typeDefinition&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;TypeDefinition&quot;</span>},
+                <span class="hljs-string">&quot;bindings&quot;</span>: {
+                    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+                    <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;MBinding&quot;</span>}
+                },
+                <span class="hljs-string">&quot;name&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>},
+                <span class="hljs-string">&quot;fragmentDictionary&quot;</span>: {
+                    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+                    <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;FragmentDictionary&quot;</span>}
+                },
+                <span class="hljs-string">&quot;started&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>}
+            },
+            <span class="hljs-string">&quot;required&quot;</span>: [<span class="hljs-string">&quot;started&quot;</span>]
+        },
+        <span class="hljs-string">&quot;MBinding&quot;</span>: {
+            <span class="hljs-string">&quot;additionalProperties&quot;</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+            <span class="hljs-string">&quot;properties&quot;</span>: {
+                <span class="hljs-string">&quot;hub&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;Channel&quot;</span>},
+                <span class="hljs-string">&quot;port&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;Port&quot;</span>}
+            }
+        },
+        <span class="hljs-string">&quot;Port&quot;</span>: {
+            <span class="hljs-string">&quot;additionalProperties&quot;</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+            <span class="hljs-string">&quot;properties&quot;</span>: {
+                <span class="hljs-string">&quot;bindings&quot;</span>: {
+                    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+                    <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;MBinding&quot;</span>}
+                },
+                <span class="hljs-string">&quot;name&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>},
+                <span class="hljs-string">&quot;portTypeRef&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;PortTypeRef&quot;</span>}
+            }
+        },
+        <span class="hljs-string">&quot;PortTypeRef&quot;</span>: {
+            <span class="hljs-string">&quot;additionalProperties&quot;</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+            <span class="hljs-string">&quot;properties&quot;</span>: {
+                <span class="hljs-string">&quot;ref&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;PortType&quot;</span>},
+                <span class="hljs-string">&quot;mappings&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;PortTypeMapping&quot;</span>},
+                <span class="hljs-string">&quot;noDependency&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>},
+                <span class="hljs-string">&quot;name&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>},
+                <span class="hljs-string">&quot;optional&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>}
+            },
+            <span class="hljs-string">&quot;required&quot;</span>: [
+                <span class="hljs-string">&quot;optional&quot;</span>,
+                <span class="hljs-string">&quot;noDependency&quot;</span>
+            ]
+        },
+        <span class="hljs-string">&quot;DeployUnit&quot;</span>: {
+            <span class="hljs-string">&quot;additionalProperties&quot;</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+            <span class="hljs-string">&quot;properties&quot;</span>: {
+                <span class="hljs-string">&quot;requiredLibs&quot;</span>: {
+                    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+                    <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;DeployUnit&quot;</span>}
+                },
+                <span class="hljs-string">&quot;hashcode&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>},
+                <span class="hljs-string">&quot;name&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>},
+                <span class="hljs-string">&quot;filters&quot;</span>: {
+                    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+                    <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;Value&quot;</span>}
+                },
+                <span class="hljs-string">&quot;version&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>},
+                <span class="hljs-string">&quot;url&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>}
+            }
+        },
+        <span class="hljs-string">&quot;DictionaryType&quot;</span>: {
+            <span class="hljs-string">&quot;additionalProperties&quot;</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>
+        },
+        <span class="hljs-string">&quot;TypeDefinition&quot;</span>: {
+            <span class="hljs-string">&quot;additionalProperties&quot;</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+            <span class="hljs-string">&quot;properties&quot;</span>: {
+                <span class="hljs-string">&quot;superTypes&quot;</span>: {
+                    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+                    <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;TypeDefinition&quot;</span>}
+                },
+                <span class="hljs-string">&quot;metaData&quot;</span>: {
+                    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+                    <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;Value&quot;</span>}
+                },
+                <span class="hljs-string">&quot;deployUnits&quot;</span>: {
+                    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+                    <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;DeployUnit&quot;</span>}
+                },
+                <span class="hljs-string">&quot;dictionaryType&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;DictionaryType&quot;</span>},
+                <span class="hljs-string">&quot;name&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>},
+                <span class="hljs-string">&quot;version&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>},
+                <span class="hljs-string">&quot;_abstract&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>}
+            },
+            <span class="hljs-string">&quot;required&quot;</span>: [<span class="hljs-string">&quot;_abstract&quot;</span>]
+        },
+        <span class="hljs-string">&quot;Repository&quot;</span>: {
+            <span class="hljs-string">&quot;additionalProperties&quot;</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+            <span class="hljs-string">&quot;properties&quot;</span>: {<span class="hljs-string">&quot;url&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>}}
+        },
+        <span class="hljs-string">&quot;PortTypeMapping&quot;</span>: {
+            <span class="hljs-string">&quot;additionalProperties&quot;</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+            <span class="hljs-string">&quot;properties&quot;</span>: {
+                <span class="hljs-string">&quot;paramTypes&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>},
+                <span class="hljs-string">&quot;beanMethodName&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>},
+                <span class="hljs-string">&quot;serviceMethodName&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>}
+            }
+        },
+        <span class="hljs-string">&quot;Value&quot;</span>: {
+            <span class="hljs-string">&quot;additionalProperties&quot;</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+            <span class="hljs-string">&quot;properties&quot;</span>: {
+                <span class="hljs-string">&quot;name&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>},
+                <span class="hljs-string">&quot;value&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>}
+            }
+        },
+        <span class="hljs-string">&quot;ComponentInstance&quot;</span>: {
+            <span class="hljs-string">&quot;additionalProperties&quot;</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+            <span class="hljs-string">&quot;properties&quot;</span>: {
+                <span class="hljs-string">&quot;metaData&quot;</span>: {
+                    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+                    <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;Value&quot;</span>}
+                },
+                <span class="hljs-string">&quot;dictionary&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;Dictionary&quot;</span>},
+                <span class="hljs-string">&quot;typeDefinition&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;TypeDefinition&quot;</span>},
+                <span class="hljs-string">&quot;provided&quot;</span>: {
+                    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+                    <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;Port&quot;</span>}
+                },
+                <span class="hljs-string">&quot;name&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>},
+                <span class="hljs-string">&quot;fragmentDictionary&quot;</span>: {
+                    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+                    <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;FragmentDictionary&quot;</span>}
+                },
+                <span class="hljs-string">&quot;started&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>},
+                <span class="hljs-string">&quot;required&quot;</span>: {
+                    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+                    <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;Port&quot;</span>}
+                }
+            },
+            <span class="hljs-string">&quot;required&quot;</span>: [<span class="hljs-string">&quot;started&quot;</span>]
+        },
+        <span class="hljs-string">&quot;ContainerNode&quot;</span>: {
+            <span class="hljs-string">&quot;additionalProperties&quot;</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+            <span class="hljs-string">&quot;properties&quot;</span>: {
+                <span class="hljs-string">&quot;networkInformation&quot;</span>: {
+                    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+                    <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;NetworkInfo&quot;</span>}
+                },
+                <span class="hljs-string">&quot;metaData&quot;</span>: {
+                    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+                    <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;Value&quot;</span>}
+                },
+                <span class="hljs-string">&quot;components&quot;</span>: {
+                    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+                    <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;ComponentInstance&quot;</span>}
+                },
+                <span class="hljs-string">&quot;dictionary&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;Dictionary&quot;</span>},
+                <span class="hljs-string">&quot;hosts&quot;</span>: {
+                    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+                    <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;ContainerNode&quot;</span>}
+                },
+                <span class="hljs-string">&quot;typeDefinition&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;TypeDefinition&quot;</span>},
+                <span class="hljs-string">&quot;name&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>},
+                <span class="hljs-string">&quot;host&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;ContainerNode&quot;</span>},
+                <span class="hljs-string">&quot;fragmentDictionary&quot;</span>: {
+                    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+                    <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;FragmentDictionary&quot;</span>}
+                },
+                <span class="hljs-string">&quot;groups&quot;</span>: {
+                    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+                    <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;Group&quot;</span>}
+                },
+                <span class="hljs-string">&quot;started&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>}
+            },
+            <span class="hljs-string">&quot;required&quot;</span>: [<span class="hljs-string">&quot;started&quot;</span>]
+        },
+        <span class="hljs-string">&quot;Package&quot;</span>: {
+            <span class="hljs-string">&quot;additionalProperties&quot;</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+            <span class="hljs-string">&quot;properties&quot;</span>: {
+                <span class="hljs-string">&quot;deployUnits&quot;</span>: {
+                    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+                    <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;DeployUnit&quot;</span>}
+                },
+                <span class="hljs-string">&quot;typeDefinitions&quot;</span>: {
+                    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+                    <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;TypeDefinition&quot;</span>}
+                },
+                <span class="hljs-string">&quot;name&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>},
+                <span class="hljs-string">&quot;packages&quot;</span>: {
+                    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+                    <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;Package&quot;</span>}
+                }
+            }
+        },
+        <span class="hljs-string">&quot;PortType&quot;</span>: {
+            <span class="hljs-string">&quot;additionalProperties&quot;</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+            <span class="hljs-string">&quot;properties&quot;</span>: {<span class="hljs-string">&quot;synchrone&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>}},
+            <span class="hljs-string">&quot;required&quot;</span>: [<span class="hljs-string">&quot;synchrone&quot;</span>]
+        }
+    },
+    <span class="hljs-string">&quot;properties&quot;</span>: {
+        <span class="hljs-string">&quot;nodes&quot;</span>: {
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+            <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;#/definitions/ContainerNode&quot;</span>}
+        },
+        <span class="hljs-string">&quot;repositories&quot;</span>: {
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+            <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;#/definitions/Repository&quot;</span>}
+        },
+        <span class="hljs-string">&quot;groups&quot;</span>: {
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+            <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;#/definitions/Group&quot;</span>}
+        },
+        <span class="hljs-string">&quot;packages&quot;</span>: {
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+            <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;#/definitions/Package&quot;</span>}
+        },
+        <span class="hljs-string">&quot;mBindings&quot;</span>: {
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+            <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;#/definitions/MBinding&quot;</span>}
+        },
+        <span class="hljs-string">&quot;hubs&quot;</span>: {
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+            <span class="hljs-string">&quot;items&quot;</span>: {<span class="hljs-string">&quot;$ref&quot;</span>: <span class="hljs-string">&quot;#/definitions/Channel&quot;</span>}
+        },
+        <span class="hljs-string">&quot;generated_KMF_ID&quot;</span>: {<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>}
+    }
+}
 </code></pre>
 
                     
@@ -1123,10 +1382,10 @@ set sync.port/node0 = &apos;8000&apos;
         </div>
 
         
-        <a href="../kevoree_script_aka_kevscript/management_commands.html" class="navigation navigation-prev " aria-label="Previous page: Management Commands"><i class="fa fa-angle-left"></i></a>
+        <a href="../platform_integration/model.html" class="navigation navigation-prev " aria-label="Previous page: Kevoree Model"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../kevoree_script_aka_kevscript/bindingsync_commands.html" class="navigation navigation-next " aria-label="Next page: Binding/Sync Commands"><i class="fa fa-angle-right"></i></a>
+        <a href="../platform_integration/core.html" class="navigation navigation-next " aria-label="Next page: Core"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>CRUD Commands | The Kevoree Book</title>
+        <title>Kevoree for the impatient | The Kevoree Book</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.4.3">
@@ -29,10 +29,10 @@
         
     
     
-    <link rel="next" href="../kevoree_script_aka_kevscript/bindingsync_commands.html" />
+    <link rel="next" href="../making_a_component/index.html" />
     
     
-    <link rel="prev" href="../kevoree_script_aka_kevscript/management_commands.html" />
+    <link rel="prev" href="../getting_started/index.html" />
     
 
         
@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="6.2.2" data-basepath=".." data-revision="Fri Oct 23 2015 10:15:31 GMT+0200 (CEST)">
+    <div class="book" data-level="3" data-basepath=".." data-revision="Fri Oct 23 2015 10:15:31 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -101,7 +101,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3" data-path="kevoree_for_the_impatient/index.html">
+        <li class="chapter active" data-level="3" data-path="kevoree_for_the_impatient/index.html">
             
                 
                     <a href="../kevoree_for_the_impatient/index.html">
@@ -610,7 +610,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="6.2.2" data-path="kevoree_script_aka_kevscript/crud_commands.html">
+        <li class="chapter " data-level="6.2.2" data-path="kevoree_script_aka_kevscript/crud_commands.html">
             
                 
                     <a href="../kevoree_script_aka_kevscript/crud_commands.html">
@@ -1080,39 +1080,102 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="crud-commands">CRUD Commands</h1>
-<p>CRUD (Create, Remove, Update, Delete) operations are basic statements in KevScript.
-Namely they allow to create and move components,channels, groups and childs nodes instances.</p>
-<p><strong>Add</strong>
-Adds a new instance of <code>Component</code>, <code>Node</code>, <code>Channel</code> or <code>Group</code>.
-You can add several elements of the same type, at the same time, by separating the instances&apos; names with a <code>,</code>.
-When the element you add is a component instance, you <code>MUST</code> specify the node that will host this instance, using a dotted notation (i.e.: node0.instance0 : MyComponentType).</p>
-<pre><code class="lang-kevs">add node0, node1 : JavaNode
-add sync : WebSocketGroup/0.0.2-SNAPSHOT
-add node0.comp0 : ToyConsole
-add node0.comp1, node0.comp2 : ToyDisplay
-add chan0 : DelayBufferedChannel
+                        <h1 id="kevoree-for-the-impatient">Kevoree for the impatient</h1>
+<blockquote>
+<p>The Kevoree Browser Runtime is still under active development; expect things to break randomly :-) Please provide feedback (<a href="https://github.com/kevoree/kevoree-browser-runtime/issues/new" target="_blank">issue on GitHub</a>), if it breaks</p>
+</blockquote>
+<h3 id="you-want-to-see-something-running-fast-ok">You want to see something running fast...ok</h3>
+<ol>
+<li><p>Open the <a href="http://runjs.kevoree.org" target="_blank">Kevoree Browser Runtime</a></p>
+<p> <img src="img/runjs/home.png" alt="Kevoree Browser Runtime"></p>
+</li>
+<li><p>To start a new node, juste enter a <strong>Node name</strong> (eg. &quot;browser&quot;) in the first input on the right and then click on <strong>Start my node</strong></p>
+<blockquote>
+<p>At that point, your current browser tab is acting as a Kevoree runtime running a default <strong>KevScript</strong> that contains a <strong>JavascriptNode</strong> and a <strong>RemoteWSGroup</strong></p>
+</blockquote>
+</li>
+<li><p>After a few time, you should see the logs:</p>
+<p> <img src="img/runjs/log.png" alt="Kevoree Browser Runtime - Logs"></p>
+</li>
+<li><p>Click on the <strong>Dashboard</strong> item in the left panel to display general informations about your runtime</p>
+<p> <img src="img/runjs/dashboard.png" alt="Kevoree Browser Runtime - Dashboard"></p>
+</li>
+<li><p>You should now see a link to the <strong>Kevoree Web Editor</strong> that as been built using your current model.<br>Follow this link</p>
+<p> <img src="img/runjs/kwe.png" alt="Kevoree Web Editor - OpenFromNode"></p>
+<blockquote>
+<p>You can see that by giving some <em>query parameters</em> to the <strong>Web Editor</strong> URL you can automatically trigger an <strong>Open From Node</strong> on start-up.</p>
+<p>This model is the abstraction of your currently running <strong>Kevoree runtime</strong> at <em><a href="http://runjs.kevoree.org" target="_blank">http://runjs.kevoree.org</a></em> on the other tab</p>
+</blockquote>
+</li>
+<li><p>The point of the <strong>Kevoree Web Editor</strong> is to provide an easy way to manage your <strong>model@runtime</strong> and then deploy it. In this tutorial, we will just add two components and a channel by using the <strong>KevScript</strong> language:</p>
+<pre><code class="lang-kevs"> // copy/paste this in the KevScript Editor in Kevoree Web Editor
+ add browser.ticker: Ticker
+ add browser.chart: Chart
+ add chan: LocalChannel
+
+ set browser.ticker.random = &apos;true&apos;
+ set browser.ticker.period = &apos;500&apos;
+
+ set browser.chart.xLimit = &apos;10&apos;
+
+ bind browser.ticker.tick chan
+ bind browser.chart.input chan
 </code></pre>
-<p><strong>Remove</strong>
-Removes elements from the model.</p>
-<pre><code class="lang-kevs">remove node0
-remove sync
-remove chan0
-</code></pre>
-<p><strong>Move</strong>
-Moves one or several instances to another node. Instances can be of type <code>NodeType</code> or <code>ComponentType</code>. The last parameter of the command is always the destination node.</p>
-<pre><code class="lang-kevs">move node0.comp0 node1
-move *.* node0 //moves all components of all nodes, to node0
-move node0.comp0, node0.comp1 node1
-</code></pre>
-<p><strong>Set</strong>
-Used to set parameters of instances.
-Some parameters are <code>fragment dependent</code>. In this case, a property can have a different value on each node howting a fragment (it can be the case for Groups and Channels). In this case, the property is set using a <code>&lt;element&gt;.&lt;property&gt;/&lt;node&gt; = &quot;&lt;value&gt;&quot;</code> notation.</p>
-<pre><code class="lang-kevs">set node0.comp0.foo = &quot;bar&quot;
-set node0.*.baz = &apos;potato&apos; //sets the property baz of all components on node0
-set sync.forcePush = &quot;false&quot;
-set sync.port/node0 = &apos;8000&apos;
-</code></pre>
+<p> <img src="img/runjs/kwe_kevs.png" alt="Kevoree Web Editor - KevScript Editor"></p>
+<p> Then click on <strong>Merge</strong> and you will see this:</p>
+<p> <img src="img/runjs/kwe_model.png" alt="Kevoree Web Editor - Model"></p>
+</li>
+<li><p>The next step, is to send this new model to your running system. To do so, in Kevoree, you use the <strong>Groups</strong> (ie. the green circles).<br>Select the group <strong>&quot;sync&quot;</strong>, this will open the instance panel on the right. At the bottom of this panel there is a <strong>Push/Pull model</strong> button, click it.</p>
+<p> <img src="img/runjs/kwe_push.png" alt="Kevoree Web Editor - Group Push"></p>
+</li>
+<li><p>Select <em>where</em> you want to send your new model:</p>
+<p> <img src="img/runjs/kwe_push2.png" alt="Kevoree Web Editor - Group Push 2"></p>
+<blockquote>
+<p>Because we use the <strong>RemoteWSGroup</strong> by default, you are given a pseudo unique ID. It should be displayed in the <strong>Path</strong> list. Just select:</p>
+<ul>
+<li><strong>host</strong>: ws.kevoree.org</li>
+<li><strong>port</strong>: 80</li>
+<li><strong>path</strong>: <em>your pseudo unique id</em> (eg. &quot;jvclSQw&quot; in the example)</li>
+</ul>
+<p>And then <strong>Push</strong> your model.</p>
+</blockquote>
+</li>
+<li><p>Back to the <strong>Kevoree Browser Runtime</strong> tab, you can witness model@runtime adaptations</p>
+<p><img src="img/runjs/adaptation.png" alt="Kevoree Browser Runtime - Adaptations"></p>
+</li>
+<li><p>Go to the <strong>Gridboard Beta</strong> page, and you will see a grid of all the running components UIs</p>
+<p><img src="img/runjs/gridboard.png" alt="Kevoree Browser Runtime - Gridboard"></p>
+</li>
+</ol>
+<p>Yay.</p>
+<h3 id="you-want-to-develop-your-own-component-here-is-a-short-tutorial-to-install-a-development-environment">You want to develop your own component, here is a short tutorial to install a development environment</h3>
+<ol>
+<li>Install <a href="https://jdk8.java.net/" target="_blank">JDK8</a></li>
+<li>Install <a href="http://www.jetbrains.com/idea/download/" target="_blank">IntelliJ IDE</a></li>
+<li>Install Kevoree Plugin in IntelliJ (<code>Preferences &gt; Plugins &gt; Browser repositories &gt; Kevoree &gt; Install</code>)</li>
+<li>Restart IntelliJ</li>
+<li>Create an Empty Kevoree Project (<code>File &gt; New Project &gt; Kevoree &gt; ok</code>)
+ <img src="img/java/firstScreen.png" alt="firstScreen"></li>
+<li>Update the version of Kevoree to desired one
+ <img src="img/java/updateVersion.png" alt="updateVersion"></li>
+<li>Refresh maven project if necessary
+ <img src="img/java/refresh.png" alt="refresh"></li>
+<li>Ok, you should see a demo component <code>HelloWorld.java</code>
+ <img src="img/java/draft.png" alt="draft"></li>
+<li>Create a KevScript file in <code>src/kevs</code>
+ <img src="img/java/createKEVS.png" alt="createKEVS"></li>
+<li>Right click and run it
+<img src="img/java/runOne.png" alt="runOne"></li>
+<li>Open <a href="http://editor.kevoree.org" target="_blank">Kevoree editor</a> and load the current model (<code>File &gt; Open from node</code> and leave everything by default)</li>
+<li>Now edit the KevScript file and add the line:<pre><code>add node0.hello : HelloWorld
+</code></pre></li>
+<li>Run it again, and reload the model. You should see the new component inside the node.
+<img src="img/java/weditor.png" alt="weditor"></li>
+<li>Now add another HelloWord component using drag and drop and push the new model
+<img src="img/java/push.png" alt="push"></li>
+<li>You sould see a message saying that your component has been pushed.</li>
+</ol>
+<p>Now feel free to modify the hello world, to connect it to several using default library of channels and so on...</p>
 
                     
                     </section>
@@ -1123,10 +1186,10 @@ set sync.port/node0 = &apos;8000&apos;
         </div>
 
         
-        <a href="../kevoree_script_aka_kevscript/management_commands.html" class="navigation navigation-prev " aria-label="Previous page: Management Commands"><i class="fa fa-angle-left"></i></a>
+        <a href="../getting_started/index.html" class="navigation navigation-prev " aria-label="Previous page: Getting started"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../kevoree_script_aka_kevscript/bindingsync_commands.html" class="navigation navigation-next " aria-label="Next page: Binding/Sync Commands"><i class="fa fa-angle-right"></i></a>
+        <a href="../making_a_component/index.html" class="navigation navigation-next " aria-label="Next page: Making a component"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

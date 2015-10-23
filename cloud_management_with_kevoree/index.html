@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>CRUD Commands | The Kevoree Book</title>
+        <title>Kevoree Cloud | The Kevoree Book</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.4.3">
@@ -29,10 +29,10 @@
         
     
     
-    <link rel="next" href="../kevoree_script_aka_kevscript/bindingsync_commands.html" />
+    <link rel="next" href="../cloud_management_with_kevoree/available_mappings_to_infrastructure.html" />
     
     
-    <link rel="prev" href="../kevoree_script_aka_kevscript/management_commands.html" />
+    <link rel="prev" href="../kevoree_script_aka_kevscript/bindingsync_commands.html" />
     
 
         
@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="6.2.2" data-basepath=".." data-revision="Fri Oct 23 2015 10:15:31 GMT+0200 (CEST)">
+    <div class="book" data-level="7" data-basepath=".." data-revision="Fri Oct 23 2015 10:15:31 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -610,7 +610,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="6.2.2" data-path="kevoree_script_aka_kevscript/crud_commands.html">
+        <li class="chapter " data-level="6.2.2" data-path="kevoree_script_aka_kevscript/crud_commands.html">
             
                 
                     <a href="../kevoree_script_aka_kevscript/crud_commands.html">
@@ -650,7 +650,7 @@
             
         </li>
     
-        <li class="chapter " data-level="7" data-path="cloud_management_with_kevoree/index.html">
+        <li class="chapter active" data-level="7" data-path="cloud_management_with_kevoree/index.html">
             
                 
                     <a href="../cloud_management_with_kevoree/index.html">
@@ -1080,40 +1080,19 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="crud-commands">CRUD Commands</h1>
-<p>CRUD (Create, Remove, Update, Delete) operations are basic statements in KevScript.
-Namely they allow to create and move components,channels, groups and childs nodes instances.</p>
-<p><strong>Add</strong>
-Adds a new instance of <code>Component</code>, <code>Node</code>, <code>Channel</code> or <code>Group</code>.
-You can add several elements of the same type, at the same time, by separating the instances&apos; names with a <code>,</code>.
-When the element you add is a component instance, you <code>MUST</code> specify the node that will host this instance, using a dotted notation (i.e.: node0.instance0 : MyComponentType).</p>
-<pre><code class="lang-kevs">add node0, node1 : JavaNode
-add sync : WebSocketGroup/0.0.2-SNAPSHOT
-add node0.comp0 : ToyConsole
-add node0.comp1, node0.comp2 : ToyDisplay
-add chan0 : DelayBufferedChannel
+                        <h1 id="cloud-management-with-kevoree">Cloud Management with Kevoree</h1>
+<p>Kevoree can be used as a Cloud management layer, simply by following this idea. If a node is a container, it can as well contains other nodes, which can then host components. In others words, simply by composing Nodes with can manage Cloud virtual infrastructures by mapping Kevoree nodes to virtual machines.</p>
+<p>Again, everything is about manipulating model, KevScript is then the simplest way to dynamically manipulate infrastructures.</p>
+<h4 id="add-nodes">Add nodes</h4>
+<p>This allows to create a new virtual machine in another container. Here <code>infra0</code> is the container, in other words, one of the IaaS (infrastructure) nodes set. <code>vm0</code> is then a PaaS (platform) node, ready himself to host components.</p>
+<pre><code>add infra0.vm0 : JavaNode
+</code></pre><h4 id="remove-nodes">Remove nodes</h4>
+<p>In the same manner, one can delete a node from his container.</p>
+<pre><code>remove infra0.vm0
+</code></pre><h4 id="move-nodes">Move nodes</h4>
+<p>The move instruction is a migration command. It allows to migrate a virtual machine to another container.</p>
+<pre><code>move infra0.vm0 infra1
 </code></pre>
-<p><strong>Remove</strong>
-Removes elements from the model.</p>
-<pre><code class="lang-kevs">remove node0
-remove sync
-remove chan0
-</code></pre>
-<p><strong>Move</strong>
-Moves one or several instances to another node. Instances can be of type <code>NodeType</code> or <code>ComponentType</code>. The last parameter of the command is always the destination node.</p>
-<pre><code class="lang-kevs">move node0.comp0 node1
-move *.* node0 //moves all components of all nodes, to node0
-move node0.comp0, node0.comp1 node1
-</code></pre>
-<p><strong>Set</strong>
-Used to set parameters of instances.
-Some parameters are <code>fragment dependent</code>. In this case, a property can have a different value on each node howting a fragment (it can be the case for Groups and Channels). In this case, the property is set using a <code>&lt;element&gt;.&lt;property&gt;/&lt;node&gt; = &quot;&lt;value&gt;&quot;</code> notation.</p>
-<pre><code class="lang-kevs">set node0.comp0.foo = &quot;bar&quot;
-set node0.*.baz = &apos;potato&apos; //sets the property baz of all components on node0
-set sync.forcePush = &quot;false&quot;
-set sync.port/node0 = &apos;8000&apos;
-</code></pre>
-
                     
                     </section>
                 
@@ -1123,10 +1102,10 @@ set sync.port/node0 = &apos;8000&apos;
         </div>
 
         
-        <a href="../kevoree_script_aka_kevscript/management_commands.html" class="navigation navigation-prev " aria-label="Previous page: Management Commands"><i class="fa fa-angle-left"></i></a>
+        <a href="../kevoree_script_aka_kevscript/bindingsync_commands.html" class="navigation navigation-prev " aria-label="Previous page: Binding/Sync Commands"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../kevoree_script_aka_kevscript/bindingsync_commands.html" class="navigation navigation-next " aria-label="Next page: Binding/Sync Commands"><i class="fa fa-angle-right"></i></a>
+        <a href="../cloud_management_with_kevoree/available_mappings_to_infrastructure.html" class="navigation navigation-next " aria-label="Next page: Available mappings"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
