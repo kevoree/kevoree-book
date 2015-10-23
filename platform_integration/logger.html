@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="8.6" data-basepath=".." data-revision="Fri Oct 23 2015 10:15:31 GMT+0200 (CEST)">
+    <div class="book" data-level="8.6" data-basepath=".." data-revision="Fri Oct 23 2015 10:28:35 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -1135,7 +1135,7 @@
 </tbody>
 </table>
 <h2 id="architecture">Architecture</h2>
-<p><img src="logger_graph.png" alt=""></p>
+<p><img src="img/logger_graph.png" alt="logger graph"></p>
 <p>The logging system is defined around a chain of filtering.
 A component which want to send a message will actually forward it his parent in the chain which will have responsibility to determine if it will forward it through. A message is logged only if it reach the core which is the only one allowed to print a log message.</p>
 <h3 id="filtering-algorithm">Filtering algorithm</h3>
