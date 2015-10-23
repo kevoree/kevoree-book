@@ -14,7 +14,7 @@ By default, every runtime must be able to start a Kevoree environment without gi
 add node0 : JavaNode
 add sync : WSGroup
 
-attach group0 sync
+attach node0 sync
 ```
 
 And in the model editor:  
