@@ -28,7 +28,3 @@ Their is no integrated tool to do all in once in c# yet.
 The process is split in two steps:
  1. publish the package to a nuget registry
  2. use the C# [Kevoree Model Generator](https://github.com/kevoree/kevoree-dotnet-model-generator) to publish the package to a Kevoree registry
-
-
-
-TODO
