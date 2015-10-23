@@ -38,7 +38,7 @@
 * [Kevoree Cloud](cloud_management_with_kevoree/README.md)
    * [Available mappings](cloud_management_with_kevoree/available_mappings_to_infrastructure.md)
    * [Boot2Kevoree](cloud_management_with_kevoree/boot2kevoree.md)
-* [Platform Integration](platform_integration/README.md)
+* [Platform Integration](platform_integration/index.md)
    * [Generalities](platform_integration/generalities.md)
    * [Kevoree Model](platform_integration/model.md)
        * [Kevoree MM V5 JsonSchema](platform_integration/kevoree-schema.md)
