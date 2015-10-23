@@ -19,7 +19,7 @@ The KevScript grammar is written using [Waxeye](http://waxeye.org/). Waxeye is a
 If you want to create your own KevScript interpreter, maybe waxeye can already generate the parser for you.  
 
 ## KevScript grammar in Waxeye
-```waxeye
+```
 # KevScript grammar
 
 # Rules
@@ -39,8 +39,6 @@ Attach              <- AttachToken ws NameList ws InstancePath                  
 Detach              <- DetachToken ws NameList ws InstancePath                                  # detach node0, node1 group0
 
 Set                 <- SetToken ws InstancePath ?(:'/' InstancePath) ws :'=' ws RealString      # set node0.comp0.myAtt = 'foo'
-                                                                                                # set sync.myAtt/node0 = "foo"
-                                                                                                # set node0.started = "false" -> is used to define if the instance is started or not
 
 Network             <- NetworkToken ws InstancePath ws String2                                  # network node1.lan.eth0 192.168.0.1
 
@@ -51,14 +49,10 @@ DelBinding          <- UnbindToken ws InstancePath ws InstancePath              
 AddRepo             <- RepoToken ws RealStringNoNewLine                                         # repo "http://org.sonatype.org/foo/bar?a=b&c=d"
 
 Include             <- IncludeToken ws String :':' String2                                      # include npm:kevoree-chan-websocket
-																					            # include mvn:org.kevoree.library.javase:websocketgrp:2.0.5-SNAPSHOT
 
 NameList            <- InstancePath ws *(:[,] ws InstancePath)                                  # node42
-                                                                                                # node0, node0.comp1, node42
 
 TypeDef             <- TypeFQN ?(:'/' Version)                                                  # FooType/0.0.1 (specific vers.)
-                                                                                                # FooType       (last vers.)
-                                                                                                # org.kevoree.Foo/0.42.0 (fully qualified name)
 
 TypeFQN             <- String3 *([.] String3)
 
