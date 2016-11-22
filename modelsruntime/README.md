@@ -14,16 +14,16 @@ This approach aims at taming the complexity of distributed adapted systems (DDAS
 > In Kevoree we propose to interact asynchronously with a local model layer in order to express forseen modification. These modification are then send to a node which plan them and execute.
 
 The principe of Models@Run.time can be explain in 4 step as depitect in the following figure:
-1. A system keep an update abstract of its state (for instance reflecting that currently he host 2 component)
+1. A system keep an update abstract of its state (for instance reflecting that currently he host 2 component2)
 2. To perform an adaptation we interact asynchrously (only by modifying the abstraction)
-3. We send the model to a runtime, wich will apply the modification (using a diff) on the system
-4. The system now reflect the asked abstract, and next adaptation can be asked.
+3. We send the model to a runtime, wich will apply the modifications (using a diff) on the system
+4. The system now reflect the asked abstract, and next adaptations can be asked.
 
 ![modelATruntime](modelATruntime2.png)
 
 **** Reason 3**** Distributed systems are often unsynchronized due to connection failed.
 
-> In Kevoree, we propose to interact through an asynchronous model. Thus the system will take care using different strategy to send the model to other platform asynchrously as well. As depicted in the following figure using such strategy, to adapt a cluster we just have to broadcast a model (an image of them).
+> In Kevoree, we propose to interact through an asynchronous model. Thus the system will take care using different strategy to send the model to other platform asynchronously as well. As depicted in the following figure using such strategy, to adapt a cluster we just have to broadcast a model (an image of them).
 
 ![modelATruntime](distModelAtRuntime.png)
 
@@ -35,7 +35,7 @@ This last figure describe a distributed Kevoree architecture. Every node are exe
 
 ### Ok then
 
-As a result in Kevoree if you want to deploy a web server on your neighbour phone, you just to
+As a result in Kevoree if you want to deploy a web server on your neighbour phone, you just do
 
 > getLocalModel.getNode("neighbour").add("WebServer").sync();
 
